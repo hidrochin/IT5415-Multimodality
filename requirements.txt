@@ -1,0 +1,19 @@
+# ── Core MVP (Phase 1: text RAG, portable Windows / Colab) ──────────────
+pymupdf>=1.24.0                # PDF text + image extraction (import fitz)
+sentence-transformers>=3.0.0  # text embeddings (pulls torch)
+faiss-cpu>=1.8.0              # vector index (swap for faiss-gpu on Colab if wanted)
+google-genai>=1.0.0          # Gemini API (figure captions + grounded QA)
+python-dotenv>=1.0.0         # load GEMINI_API_KEY from .env
+pyyaml>=6.0                  # config.yaml
+numpy>=1.26.0
+Pillow>=10.0.0               # image handling
+tqdm>=4.66.0                 # progress bars
+
+# ── Phase 2 (multimodal: OCR, figure captions, image embeddings, rerank) ─
+# Uncomment as each module is added. Some are heavy / install more easily on Colab.
+# paddlepaddle>=2.6.0
+# paddleocr>=2.7.0
+# open_clip_torch>=2.24.0    # CLIP / SigLIP image embeddings
+# FlagEmbedding>=1.2.0       # BGE-M3 + bge-reranker-base
+# pdfplumber>=0.11.0         # table-aware parsing
+# gradio>=4.0.0              # UI

@@ -1,0 +1,45 @@
+# ───────────────────────────── Multimodal RAG config ─────────────────────────────
+# Paths are resolved relative to the project root unless absolute.
+
+paths:
+  data_raw: data/raw                 # drop your PDFs / slides here
+  data_processed: data/processed     # extracted images, indexes, artifacts
+  index_dir: data/processed/index    # FAISS index + chunk store
+
+parsing:
+  extract_images: true
+  min_image_size: 64                 # skip tiny images (icons, bullets), pixels
+
+chunking:
+  chunk_size: 800                    # target characters per chunk
+  chunk_overlap: 150                 # characters of overlap between chunks
+  min_chunk_chars: 50                # drop chunks shorter than this
+
+embeddings:
+  # Spec's primary text embedder (BGE-M3): strong on dense academic text, 1024-dim,
+  # multilingual, no prefix needed. Alternatives (set prefixes accordingly):
+  #   intfloat/multilingual-e5-base          -> query_prefix "query: ", passage_prefix "passage: "
+  #   sentence-transformers/all-MiniLM-L6-v2 -> fast/light, lower quality, no prefix
+  text_model: BAAI/bge-m3
+  device: auto                       # auto | cpu | cuda
+  batch_size: 16
+  query_prefix: ""
+  passage_prefix: ""
+
+retrieval:
+  candidate_k: 20                    # passages pulled from FAISS before reranking
+  top_k: 5                           # final passages sent to the LLM
+
+rerank:
+  # Spec module 6.7: cross-encoder re-scores the candidate_k FAISS hits for precision.
+  enabled: true
+  model: BAAI/bge-reranker-base
+  batch_size: 16
+
+qa:
+  provider: gemini
+  # Cheapest Gemini model: 2.5-flash-lite (lowest $/token, still multimodal so it
+  # also covers Phase-2 figure captioning). Bump to gemini-2.5-flash/pro for quality.
+  model: gemini-2.5-flash-lite
+  temperature: 0.2
+  max_output_tokens: 1024

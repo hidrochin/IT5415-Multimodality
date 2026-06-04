@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+
+# Secrets
+.env
+
+# Data & build artifacts (keep folders, ignore contents)
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Model / HF caches
+.cache/
+*.faiss
+
+# Notebooks
+.ipynb_checkpoints/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Markdown — keep private; only README.md is public/pushed
+*.md
+!README.md
