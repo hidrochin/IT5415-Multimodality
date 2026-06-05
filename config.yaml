@@ -26,6 +26,25 @@ embeddings:
   query_prefix: ""
   passage_prefix: ""
 
+ocr:
+  # Spec module 6.2: PaddleOCR reads text baked into figures, screenshots, and
+  # slide images so it becomes searchable. Runs once per extracted image.
+  enabled: true
+  lang: en                           # PaddleOCR language model (en, ch, etc.)
+  min_confidence: 0.5                # drop OCR lines below this confidence
+  use_gpu: false                     # PaddleOCR on GPU needs the paddle-gpu build
+
+figures:
+  # Spec module 6.3: Gemini (a VLM) writes a semantic caption per extracted
+  # figure — richer than OCR alone for diagrams, charts, and pipelines.
+  enabled: true
+  model: gemini-2.5-flash-lite       # multimodal; reuse the cheap QA model family
+  max_figures: 0                     # 0 = caption every figure; else cap per doc (cost)
+  prompt: |
+    Describe this academic figure in detail. Focus on: pipeline stages,
+    relationships between components, technical/mathematical content, and the
+    figure's overall semantic meaning. Be specific and concise (no preamble).
+
 retrieval:
   candidate_k: 20                    # passages pulled from FAISS before reranking
   top_k: 5                           # final passages sent to the LLM

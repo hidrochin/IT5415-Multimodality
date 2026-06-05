@@ -1,0 +1,19 @@
+{
+  "source": "attention_is_all_you_need.pdf",
+  "note": "Hand-authored gold set for Phase 4 retrieval evaluation. evidence_pages are 1-indexed PDF pages (15-page arXiv layout). A retrieved chunk counts as relevant if its page is in evidence_pages.",
+  "qa_pairs": [
+    {"id": "q01", "question": "How is scaled dot-product attention computed?", "evidence_pages": [4], "type": "text"},
+    {"id": "q02", "question": "Why are the dot products scaled by one over the square root of d_k?", "evidence_pages": [4], "type": "text"},
+    {"id": "q03", "question": "What is multi-head attention and why is it used?", "evidence_pages": [4, 5], "type": "text"},
+    {"id": "q04", "question": "What two sub-layers make up each encoder layer?", "evidence_pages": [3], "type": "text"},
+    {"id": "q05", "question": "How many identical layers are stacked in the encoder and decoder?", "evidence_pages": [3], "type": "text"},
+    {"id": "q06", "question": "What positional encoding does the Transformer use?", "evidence_pages": [6], "type": "text"},
+    {"id": "q07", "question": "What optimizer and learning-rate schedule were used for training?", "evidence_pages": [7, 8], "type": "text"},
+    {"id": "q08", "question": "What regularization techniques are applied during training?", "evidence_pages": [8], "type": "text"},
+    {"id": "q09", "question": "What BLEU score does the Transformer achieve on English-to-German translation?", "evidence_pages": [8], "type": "text"},
+    {"id": "q10", "question": "How well does the Transformer generalize to English constituency parsing?", "evidence_pages": [10], "type": "text"},
+    {"id": "q11", "question": "Why does the paper prefer self-attention over recurrence and convolution?", "evidence_pages": [6, 7], "type": "text"},
+    {"id": "q12", "question": "Explain the overall Transformer model architecture shown in the diagram.", "evidence_pages": [3], "type": "figure"},
+    {"id": "q13", "question": "What are the components of the scaled dot-product and multi-head attention modules shown in Figure 2?", "evidence_pages": [4], "type": "figure"}
+  ]
+}

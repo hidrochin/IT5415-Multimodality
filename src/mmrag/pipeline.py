@@ -13,8 +13,8 @@ from pathlib import Path
 from typing import Any, Optional
 
 from .config import Config, load_config
-from .chunking import chunk_document
-from .parsing import parse_pdf
+from .chunking import build_figure_chunk, chunk_document
+from .parsing import ParsedDocument, parse_pdf
 
 
 class MultimodalRAG:
@@ -22,6 +22,8 @@ class MultimodalRAG:
         self.cfg = config or load_config()
         self._embedder = None  # lazily built (loads torch)
         self._reranker = None  # lazily built
+        self._ocr = None       # lazily built (loads PaddleOCR)
+        self._captioner = None  # lazily built (Gemini)
 
     @property
     def embedder(self):
@@ -51,6 +53,37 @@ class MultimodalRAG:
             )
         return self._reranker
 
+    @property
+    def ocr(self):
+        """PaddleOCR engine (spec module 6.2), or None if unavailable."""
+        if self._ocr is None:
+            from .ocr import OCREngine
+
+            ocfg = self.cfg.get("ocr", {})
+            self._ocr = OCREngine(
+                lang=ocfg.get("lang", "en"),
+                min_confidence=ocfg.get("min_confidence", 0.5),
+                use_gpu=ocfg.get("use_gpu", False),
+            )
+        return self._ocr
+
+    @property
+    def captioner(self):
+        """Gemini figure captioner (spec module 6.3), or None if no API key."""
+        if self._captioner is None:
+            api_key = self.cfg.gemini_api_key
+            if not api_key:
+                return None
+            from .figures import FigureCaptioner
+
+            fcfg = self.cfg.get("figures", {})
+            self._captioner = FigureCaptioner(
+                api_key=api_key,
+                model=fcfg.get("model", "gemini-2.5-flash-lite"),
+                prompt=fcfg.get("prompt", ""),
+            )
+        return self._captioner
+
     # ── Ingestion ────────────────────────────────────────────────────────────
     def ingest(self, pdf_path: str | Path, rebuild: bool = True) -> dict[str, Any]:
         """Parse -> chunk -> embed -> (re)build FAISS index on disk."""
@@ -72,8 +105,14 @@ class MultimodalRAG:
             min_chunk_chars=ccfg.get("min_chunk_chars", 50),
         )
         chunk_dicts = [c.to_dict() for c in chunks]
+
+        # Phase 2: OCR + caption each extracted figure into its own chunk so
+        # figures become retrievable alongside the body text (Experiment 2).
+        figure_dicts = self._build_figure_chunks(parsed)
+        chunk_dicts.extend(figure_dicts)
+
         if not chunk_dicts:
-            raise ValueError(f"No usable text chunks extracted from {pdf_path}")
+            raise ValueError(f"No usable text or figure chunks extracted from {pdf_path}")
 
         embeddings = self.embedder.encode_passages([c["text"] for c in chunk_dicts])
 
@@ -89,9 +128,53 @@ class MultimodalRAG:
             "source": parsed.source,
             "pages": len(parsed.pages),
             "chunks": len(chunk_dicts),
+            "text_chunks": len(chunks),
+            "figure_chunks": len(figure_dicts),
             "images": parsed.num_images,
             "index_dir": str(index_path),
         }
+
+    def _build_figure_chunks(self, parsed: ParsedDocument) -> list[dict]:
+        """OCR + caption every extracted image into retrievable figure chunks."""
+        ocr_on = self.cfg.get("ocr", {}).get("enabled", False)
+        cap_on = self.cfg.get("figures", {}).get("enabled", False)
+        if not (ocr_on or cap_on):
+            return []
+
+        max_figs = self.cfg.get("figures", {}).get("max_figures", 0) or 0
+        figure_dicts: list[dict] = []
+        captioned = 0
+
+        for page in parsed.pages:
+            for idx, img in enumerate(page.images):
+                image_path = img["path"]
+
+                ocr_text = ""
+                if ocr_on:
+                    try:
+                        ocr_text = self.ocr.extract_text(image_path)
+                    except Exception:
+                        ocr_text = ""
+
+                caption = ""
+                want_caption = cap_on and (max_figs <= 0 or captioned < max_figs)
+                if want_caption and self.captioner is not None:
+                    caption = self.captioner.caption(image_path)
+                    if caption:
+                        captioned += 1
+
+                chunk = build_figure_chunk(
+                    source=parsed.source,
+                    page=page.page_number,
+                    index=idx,
+                    image_path=image_path,
+                    caption=caption,
+                    ocr_text=ocr_text,
+                )
+                if chunk is not None:
+                    figure_dicts.append(chunk.to_dict())
+
+        return figure_dicts
 
     # ── Question answering ───────────────────────────────────────────────────
     def retrieve(self, question: str, top_k: Optional[int] = None) -> list[dict]:

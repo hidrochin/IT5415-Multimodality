@@ -23,7 +23,9 @@ def main() -> None:
     stats = rag.ingest(args.pdf, rebuild=not args.append)
     print(
         f"Ingested {stats['source']}: {stats['pages']} pages, "
-        f"{stats['chunks']} chunks, {stats['images']} images."
+        f"{stats['chunks']} chunks "
+        f"({stats['text_chunks']} text + {stats['figure_chunks']} figure), "
+        f"{stats['images']} images."
     )
     print(f"Index saved to: {stats['index_dir']}")
 

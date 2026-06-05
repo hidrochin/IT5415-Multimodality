@@ -54,6 +54,43 @@ def chunk_document(
     return chunks
 
 
+def build_figure_chunk(
+    source: str,
+    page: int,
+    index: int,
+    image_path: str,
+    caption: Optional[str] = None,
+    ocr_text: Optional[str] = None,
+) -> Optional[Chunk]:
+    """Build one retrievable chunk for an extracted figure (spec module 6.4).
+
+    The embeddable ``text`` fuses the Gemini caption (semantic description) with
+    any OCR text baked into the figure. Returns ``None`` if both are empty, so a
+    figure with no usable signal is simply skipped rather than indexed blank.
+    """
+    caption = (caption or "").strip() or None
+    ocr_text = (ocr_text or "").strip() or None
+
+    parts: list[str] = []
+    if caption:
+        parts.append(caption)
+    if ocr_text:
+        parts.append(f"Text in figure: {ocr_text}")
+    text = "\n".join(parts).strip()
+    if not text:
+        return None
+
+    cid = f"{source}::p{page}::fig{index}"
+    return Chunk(
+        id=cid,
+        text=text,
+        page=page,
+        source=source,
+        figure_caption=caption,
+        image_path=image_path,
+    )
+
+
 def _clean(text: str) -> str:
     text = text.replace("\r", " ")
     text = re.sub(r"[ \t]+", " ", text)
