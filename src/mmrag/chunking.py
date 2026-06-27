@@ -91,6 +91,42 @@ def build_figure_chunk(
     )
 
 
+def build_slide_chunk(
+    source: str,
+    page: int,
+    image_path: str,
+    caption: Optional[str] = None,
+    ocr_text: Optional[str] = None,
+) -> Optional[Chunk]:
+    """Build one retrievable chunk for a *whole rendered slide* (slide-render path).
+
+    Same fuse-and-skip-if-empty logic as ``build_figure_chunk``, but the unit is
+    the page, not an embedded fragment, so there is exactly one per slide and its
+    id ends in ``::slide``. Identified downstream by a non-empty ``image_path``
+    (so it counts as a "figure"/visual chunk in the text-only vs +caption split).
+    """
+    caption = (caption or "").strip() or None
+    ocr_text = (ocr_text or "").strip() or None
+
+    parts: list[str] = []
+    if caption:
+        parts.append(caption)
+    if ocr_text:
+        parts.append(f"Text on slide: {ocr_text}")
+    text = "\n".join(parts).strip()
+    if not text:
+        return None
+
+    return Chunk(
+        id=f"{source}::p{page}::slide",
+        text=text,
+        page=page,
+        source=source,
+        figure_caption=caption,
+        image_path=image_path,
+    )
+
+
 def _clean(text: str) -> str:
     text = text.replace("\r", " ")
     text = re.sub(r"[ \t]+", " ", text)

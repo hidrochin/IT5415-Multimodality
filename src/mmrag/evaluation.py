@@ -2,25 +2,28 @@
 
 These metrics let us answer the research questions empirically by comparing a
 text-only index against a text+figure-caption index over a hand-authored gold
-set (RQ1/RQ2). A retrieved chunk is "relevant" when its page is one of the
-question's ``evidence_pages``.
+set (RQ1/RQ2). A retrieved chunk is "relevant" when it matches the question's
+evidence. For a single-document index that key is just the page; for the
+**multi-deck** slide index pages collide across decks, so the key is the
+``(source, page)`` pair (T3). The matching functions below are generic over the
+key type — pass plain pages or ``(source, page)`` tuples.
 """
 from __future__ import annotations
 
-from typing import Sequence
+from typing import Hashable, Sequence
 
 
-def recall_at_k(ranked_pages: Sequence[int], gold_pages: Sequence[int], k: int) -> float:
-    """1.0 if any of the top-k retrieved pages is a gold evidence page, else 0.0."""
-    gold = set(gold_pages)
-    return 1.0 if any(p in gold for p in ranked_pages[:k]) else 0.0
+def recall_at_k(ranked: Sequence[Hashable], gold: Sequence[Hashable], k: int) -> float:
+    """1.0 if any of the top-k retrieved keys is a gold evidence key, else 0.0."""
+    gold_set = set(gold)
+    return 1.0 if any(key in gold_set for key in ranked[:k]) else 0.0
 
 
-def reciprocal_rank(ranked_pages: Sequence[int], gold_pages: Sequence[int]) -> float:
-    """1 / rank of the first relevant page in the ranking (0.0 if none)."""
-    gold = set(gold_pages)
-    for rank, page in enumerate(ranked_pages, start=1):
-        if page in gold:
+def reciprocal_rank(ranked: Sequence[Hashable], gold: Sequence[Hashable]) -> float:
+    """1 / rank of the first relevant key in the ranking (0.0 if none)."""
+    gold_set = set(gold)
+    for rank, key in enumerate(ranked, start=1):
+        if key in gold_set:
             return 1.0 / rank
     return 0.0
 
@@ -68,7 +71,12 @@ def evaluate(
     per_query: list[dict] = []
     for qa in qa_pairs:
         question = qa["question"]
-        gold = qa["evidence_pages"]
+        gold_pages = qa["evidence_pages"]
+        # Source-aware scoring (T3): on the multi-deck slide index a page number
+        # alone is ambiguous (every deck has a "page 7"), so when the question
+        # names a `source` we score on (source, page) keys. Falls back to plain
+        # pages for single-doc gold sets (e.g. attention_qa.json) that omit it.
+        gold_source = qa.get("source")
 
         q_emb = embedder.encode_queries([question])
         if reranker is not None:
@@ -78,18 +86,31 @@ def evaluate(
             hits = index.search(q_emb, top_k=top_k)
 
         ranked_pages = [h["page"] for h in hits]
+        if gold_source is not None:
+            ranked_keys = [(h.get("source"), h["page"]) for h in hits]
+            gold_keys = [(gold_source, p) for p in gold_pages]
+        else:
+            ranked_keys, gold_keys = ranked_pages, gold_pages
+        gold_key_set = set(gold_keys)
+
         row = {
             "id": qa.get("id"),
             "type": qa.get("type"),
-            "gold": gold,
+            "source": gold_source,
+            "gold": gold_pages,
             "ranked_pages": ranked_pages,
             "ranked_ids": [h.get("id", "") for h in hits],
-            # Did an actual figure chunk (OCR/caption) surface in the results?
-            "figure_hit": any(h.get("image_path") for h in hits),
-            "rr": reciprocal_rank(ranked_pages, gold),
+            # Did the *relevant* figure/slide chunk (right source + gold page)
+            # actually surface? The mechanism check behind RQ2 — captions only
+            # help if the visual chunk for the evidence page is retrieved.
+            "figure_hit": any(
+                h.get("image_path") and (h.get("source"), h["page"]) in gold_key_set
+                for h in hits
+            ),
+            "rr": reciprocal_rank(ranked_keys, gold_keys),
         }
         for k in ks:
-            row[f"recall@{k}"] = recall_at_k(ranked_pages, gold, k)
+            row[f"recall@{k}"] = recall_at_k(ranked_keys, gold_keys, k)
         per_query.append(row)
 
     return {"per_query": per_query, "metrics": aggregate(per_query, ks)}

@@ -9,6 +9,8 @@ paths:
 parsing:
   extract_images: true
   min_image_size: 64                 # skip tiny images (icons, bullets), pixels
+  render_pages: true                 # rasterize whole pages (slide-render captioning path)
+  render_dpi: 130                    # resolution of rendered slide PNGs
 
 chunking:
   chunk_size: 800                    # target characters per chunk
@@ -27,23 +29,31 @@ embeddings:
   passage_prefix: ""
 
 ocr:
-  # Spec module 6.2: PaddleOCR reads text baked into figures, screenshots, and
-  # slide images so it becomes searchable. Runs once per extracted image.
-  enabled: true
+  # Spec module 6.2: PaddleOCR reads text baked into figures/screenshots.
+  # OFF for the slide-render path: these decks have a real text layer (parsing
+  # already extracts the literal slide text), so OCR over the rendered slide is
+  # redundant and costs ~1h of CPU over ~1000 pages. Reserved for the per-figure
+  # path, where text is baked into image fragments with no text layer.
+  enabled: false
   lang: en                           # PaddleOCR language model (en, ch, etc.)
   min_confidence: 0.5                # drop OCR lines below this confidence
   use_gpu: false                     # PaddleOCR on GPU needs the paddle-gpu build
 
 figures:
-  # Spec module 6.3: Gemini (a VLM) writes a semantic caption per extracted
-  # figure — richer than OCR alone for diagrams, charts, and pipelines.
+  # Spec module 6.3: Gemini (a VLM) writes a semantic caption of the visual.
+  # mode=slide  -> caption each rendered *whole slide* (~1 call/page); the slide's
+  #               text layer carries words, the caption carries diagram/chart meaning.
+  # mode=figure -> caption each extracted embedded image (Phase-2 behaviour, ~10×).
   enabled: true
+  mode: slide
   model: gemini-2.5-flash-lite       # multimodal; reuse the cheap QA model family
   max_figures: 0                     # 0 = caption every figure; else cap per doc (cost)
+  concurrency: 4                     # parallel VLM calls (gentle on rate limits; 429/503 retried w/ backoff)
   prompt: |
-    Describe this academic figure in detail. Focus on: pipeline stages,
-    relationships between components, technical/mathematical content, and the
-    figure's overall semantic meaning. Be specific and concise (no preamble).
+    Describe this lecture slide for retrieval. State the slide's topic, then
+    describe any diagram, chart, table, or equation: its components, the
+    relationships/flow between them, and what it conveys. Be specific and
+    concise; do not transcribe bullet text verbatim and give no preamble.
 
 retrieval:
   candidate_k: 20                    # passages pulled from FAISS before reranking

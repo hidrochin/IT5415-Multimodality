@@ -1,6 +1,6 @@
 """CLI: evaluate retrieval quality, text-only vs text+figure-caption.
 
-Answers RQ1/RQ2 from EXPECTATION.md by re-embedding the ingested chunks two ways
+Answers RQ1/RQ2 from PROPOSAL.md by re-embedding the ingested chunks two ways
 and scoring both against the hand-authored gold set:
 
     python scripts/evaluate.py
@@ -80,15 +80,16 @@ def main() -> None:
             sub = [q for q in res["per_query"] if q["id"] in fig_ids]
             _print_table(name, aggregate(sub, KS))
 
-    # Chunk-level signal: do the figure (caption/OCR) chunks actually surface?
-    # Page-level recall can saturate when figure pages are text-rich, so this
-    # shows whether captions are being retrieved at all (RQ2 mechanism).
+    # Chunk-level signal: does the *relevant* slide/figure chunk actually
+    # surface (right source + gold page)? Page-level recall can be carried by a
+    # text chunk on the same page, so this isolates whether the caption chunk
+    # itself is retrieved — the RQ2 mechanism (source-aware since T3).
     if fig_ids:
         mm_fig = [q for q in results["text+caption"]["per_query"] if q["id"] in fig_ids]
         hits = sum(1 for q in mm_fig if q["figure_hit"])
         print(
-            f"\n=== Figure-chunk retrieval (text+caption) ===\n"
-            f"  figure chunk in top-{top_k} for {hits}/{len(mm_fig)} figure-grounded questions"
+            f"\n=== Slide-chunk retrieval (text+caption) ===\n"
+            f"  relevant slide/figure chunk in top-{top_k} for {hits}/{len(mm_fig)} figure-grounded questions"
         )
 
     # Per-question MRR delta, so regressions are visible, not just averages.

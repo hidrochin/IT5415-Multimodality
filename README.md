@@ -1,7 +1,8 @@
 # Research-Oriented Multimodal RAG
 
 Multimodal Retrieval-Augmented Generation over academic documents and lecture
-slides. See [EXPECTATION.md](EXPECTATION.md) for the full research proposal.
+slides. See [PROPOSAL.md](PROPOSAL.md) for the full research proposal (theory,
+formal problem statement, hypotheses, and evaluation protocol).
 
 This repo is built **incrementally**. Phase 1 (this MVP) is a working
 text-RAG vertical slice; later phases add OCR, figure captioning, image
@@ -103,18 +104,59 @@ python scripts/evaluate.py            # add --no-rerank for first-stage dense on
 figure pages (p3/p4) are text-rich, so text-only already retrieves them. But the
 caption chunks **are** surfaced — a figure chunk appears in the top-5 for 2/2
 figure-grounded questions — they're simply redundant when the page also has
-descriptive prose. The payoff for captions should show on **text-sparse
-documents (lecture slides)**, which is the next dataset to add (EXPECTATION.md §7).
-Sample size is small; treat as a sanity baseline, not a conclusion.
+descriptive prose. This null is exactly what hypothesis **H2** predicts for a
+text-rich document (caption benefit is *moderated by page text-sparsity*); the
+decisive test is **text-sparse lecture slides** (below).
 
-## Roadmap (maps to EXPECTATION.md)
+### Decisive test — text-sparse lecture slides (H1 / H2)
+
+The slide gold set (`data/eval/slides_qa.json`, **33 QA pairs**, 18 figure / 15
+text) is scored against the multi-deck index. Because page numbers collide across
+the 14 decks, scoring is **source-aware** — a hit counts only when both its deck
+(`source`) and page match the gold:
+
+```powershell
+python scripts/ingest_corpus.py                            # build the multi-deck slide index
+python scripts/evaluate.py --gold data/eval/slides_qa.json # add --no-rerank for dense-only
+```
+
+**Results** (33 questions, top_k=5):
+
+| Subset       | Config       | rerank | R@1   | R@3   | R@5   | MRR   |
+| ------------ | ------------ | ------ | ----- | ----- | ----- | ----- |
+| all (33)     | text-only    | on     | 0.576 | 0.788 | 0.818 | 0.683 |
+| all (33)     | text+caption | on     | **0.727** | **0.909** | **0.909** | **0.813** |
+| all (33)     | text-only    | off    | 0.500 | 0.778 | 0.889 | 0.655 |
+| all (33)     | text+caption | off    | **0.833** | **0.944** | **0.944** | **0.880** |
+| figure (18)  | text-only    | on     | 0.556 | 0.778 | 0.833 | 0.669 |
+| figure (18)  | text+caption | on     | **0.778** | **0.944** | **0.944** | **0.852** |
+
+**Interpretation.** Flipping the regime flips the result. On text-sparse slides,
+making figures retrievable via captions **lifts** retrieval — overall R@1
+0.576→0.727 (MRR 0.683→0.813), with the gain concentrated in the figure-grounded
+subset (R@1 0.556→0.778). The relevant slide caption chunk reaches top-5 for
+14/18 figure questions. This is the mirror image of the text-rich null above, so
+both **H1** (multimodal beats text-only, concentrated in figure queries +
+text-sparse docs) and **H2** (caption benefit is moderated by page text-density)
+are **supported**. One incidental finding: the *text* cross-encoder reranker
+slightly demotes correct caption chunks (text+caption R@1 is higher *without* it,
+0.833 vs 0.727) — a cross-modal-aware reranker is future work. Caveat: n=33, one
+course corpus, page-level relevance — **indicative, not significant** until BM25
+baselines and bootstrap CIs land ([PROPOSAL.md](PROPOSAL.md) §6.4, §7.2).
+
+## Roadmap (maps to [PROPOSAL.md](PROPOSAL.md) §10)
 
 - [x] **Phase 1 — text RAG MVP**: parsing, chunking, embeddings, FAISS, grounded QA
-- [x] **Phase 1.5 — quality pass**: bge-m3 embeddings, bge-reranker-base (module 6.7), tightened grounding
-- [x] **Phase 2 — OCR** (PaddleOCR, module 6.2) over extracted figures/screenshots
-- [x] **Phase 2 — figure captioning** (Gemini VLM, module 6.3); figures become searchable chunks (enables Experiment 2)
-- [x] **Phase 4 — retrieval evaluation** (Recall@K, MRR; module 9) for RQ1/RQ2 — see [Evaluation](#evaluation-rq1--rq2)
-- [ ] **Phase 3 — image embeddings** (CLIP/SigLIP) + hybrid score fusion (RQ3)
-- [ ] **Phase 4 — QA accuracy** (Gemini-judged) + lecture-slide gold set
-- [ ] **Phase 4 — Gradio UI** and Colab notebook
+- [x] **Phase 1.5 — quality pass**: bge-m3 embeddings, bge-reranker-base, tightened grounding
+- [x] **Phase 2 — OCR** (PaddleOCR) over extracted figures/screenshots
+- [x] **Phase 2 — figure captioning** (Gemini VLM): describe-then-embed figure chunks (condition E2)
+- [x] **Phase 4a — retrieval evaluation** (Recall@K, MRR) for RQ1/RQ2 — see [Evaluation](#evaluation-rq1--rq2)
+- [x] **Dataset — text-sparse lecture slides ingested**: 14 decks, whole-slide render + VLM caption
+      (one shared index, 1,226 chunks; 4 eval decks captioned, rest text-only distractors)
+- [x] **Gold QA over the slide decks** (33 pairs) + **source-aware slide retrieval eval** — H1/H2
+      both supported (captions lift R@1 0.576→0.727; figure subset 0.556→0.778), see [Evaluation](#evaluation-rq1--rq2)
+- [ ] **Phase 4b — eval hardening**: BM25 baseline, nDCG, bootstrap CIs, faithfulness / citation precision-recall
+- [ ] **Phase 3 — image embeddings** (CLIP/SigLIP) + **RRF / distribution-aware fusion** (RQ3 / H3),
+      *not* a fixed-weight score blend
+- [ ] **Phase 4c — QA accuracy** (LLM-judge + human-κ validation) + Gradio UI + Colab notebook
 ```

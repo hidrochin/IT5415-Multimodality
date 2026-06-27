@@ -1,0 +1,48 @@
+{
+  "source": "slide_corpus_4decks",
+  "note": "Hand-authored gold set for T2/T3 slide retrieval eval over the 4 captioned gold decks. The index is multi-deck, so page numbers collide across decks: every qa_pair carries its own `source` (the deck filename) and `evidence_pages` are 1-indexed page numbers WITHIN that deck. A retrieved chunk counts as relevant only when BOTH its `source` matches the question's `source` AND its `page` is in `evidence_pages` (source-aware scoring is wired up in T3). `type: figure` marks questions whose answer is carried primarily by a slide diagram/figure rather than the on-slide prose; `type: text` marks prose/definition/equation questions. Pre-registered from slide ground truth before inspecting any retrieval output (PROPOSAL.md §8).",
+  "decks": [
+    "lecture3_1-MultimodalFusion.pdf",
+    "lecture4.1-MultimodalAlignment.pdf",
+    "lecture5_1-MultimodalTransformers-Part1.pdf",
+    "Lecture9.1-Generation-Part1.pdf"
+  ],
+  "qa_pairs": [
+    {"id": "fus01", "source": "lecture3_1-MultimodalFusion.pdf", "question": "What are the three sub-challenges of multimodal representation, and how do they differ in the number of modalities versus representations?", "evidence_pages": [7], "type": "figure"},
+    {"id": "fus02", "source": "lecture3_1-MultimodalFusion.pdf", "question": "How does additive fusion differ from multiplicative fusion of two modalities?", "evidence_pages": [42, 43], "type": "figure"},
+    {"id": "fus03", "source": "lecture3_1-MultimodalFusion.pdf", "question": "What is tensor fusion and how is the bimodal fused tensor computed from the unimodal vectors?", "evidence_pages": [44], "type": "figure"},
+    {"id": "fus04", "source": "lecture3_1-MultimodalFusion.pdf", "question": "What problem does low-rank multimodal fusion (LMF) solve compared to plain tensor fusion?", "evidence_pages": [45, 46], "type": "figure"},
+    {"id": "fus05", "source": "lecture3_1-MultimodalFusion.pdf", "question": "What is gated fusion and how are the gating functions related to attention?", "evidence_pages": [54], "type": "text"},
+    {"id": "fus06", "source": "lecture3_1-MultimodalFusion.pdf", "question": "How does early fusion differ from late fusion?", "evidence_pages": [35], "type": "figure"},
+    {"id": "fus07", "source": "lecture3_1-MultimodalFusion.pdf", "question": "How does raw-modality fusion differ from homogeneous fusion, and when should each be used?", "evidence_pages": [19, 23, 24], "type": "text"},
+    {"id": "fus08", "source": "lecture3_1-MultimodalFusion.pdf", "question": "How does FuseMix achieve data-efficient multimodal fusion on a single GPU?", "evidence_pages": [31, 33], "type": "text"},
+
+    {"id": "ali01", "source": "lecture4.1-MultimodalAlignment.pdf", "question": "What contrastive loss does CLIP use to learn coordinated representations, and what are the positive and negative pairs?", "evidence_pages": [6, 7], "type": "text"},
+    {"id": "ali02", "source": "lecture4.1-MultimodalAlignment.pdf", "question": "What is language grounding in multimodal alignment?", "evidence_pages": [17], "type": "text"},
+    {"id": "ali03", "source": "lecture4.1-MultimodalAlignment.pdf", "question": "How does the assignment problem differ from optimal transport for global alignment?", "evidence_pages": [28, 29], "type": "figure"},
+    {"id": "ali04", "source": "lecture4.1-MultimodalAlignment.pdf", "question": "What restrictions must a Dynamic Time Warping path satisfy?", "evidence_pages": [34], "type": "figure"},
+    {"id": "ali05", "source": "lecture4.1-MultimodalAlignment.pdf", "question": "What is the difference between hard attention and soft attention for directed alignment?", "evidence_pages": [19, 52], "type": "figure"},
+    {"id": "ali06", "source": "lecture4.1-MultimodalAlignment.pdf", "question": "How does the CTC collapse rule turn per-frame predictions into a final label sequence?", "evidence_pages": [44, 55], "type": "figure"},
+    {"id": "ali07", "source": "lecture4.1-MultimodalAlignment.pdf", "question": "What are the sub-challenges of Challenge 2: Alignment?", "evidence_pages": [15, 47], "type": "figure"},
+    {"id": "ali08", "source": "lecture4.1-MultimodalAlignment.pdf", "question": "What does SigLIP 2 change relative to classic CLIP?", "evidence_pages": [60], "type": "text"},
+
+    {"id": "trf01", "source": "lecture5_1-MultimodalTransformers-Part1.pdf", "question": "Why are position embeddings needed in a transformer if self-attention already mixes tokens?", "evidence_pages": [4, 8], "type": "text"},
+    {"id": "trf02", "source": "lecture5_1-MultimodalTransformers-Part1.pdf", "question": "What three embeddings are summed to form BERT's input representation?", "evidence_pages": [23], "type": "figure"},
+    {"id": "trf03", "source": "lecture5_1-MultimodalTransformers-Part1.pdf", "question": "How does the masked language model pre-training task work in BERT?", "evidence_pages": [24, 25], "type": "text"},
+    {"id": "trf04", "source": "lecture5_1-MultimodalTransformers-Part1.pdf", "question": "What is the next sentence prediction task and what does it predict?", "evidence_pages": [26, 27], "type": "text"},
+    {"id": "trf05", "source": "lecture5_1-MultimodalTransformers-Part1.pdf", "question": "What are the three design patterns for multimodal transformers?", "evidence_pages": [37], "type": "text"},
+    {"id": "trf06", "source": "lecture5_1-MultimodalTransformers-Part1.pdf", "question": "How do one-stream models like VisualBERT and UNITER combine text tokens and image regions?", "evidence_pages": [40], "type": "figure"},
+    {"id": "trf07", "source": "lecture5_1-MultimodalTransformers-Part1.pdf", "question": "How do ViLBERT and LXMERT structure their separate streams with cross-modal attention?", "evidence_pages": [49], "type": "figure"},
+    {"id": "trf08", "source": "lecture5_1-MultimodalTransformers-Part1.pdf", "question": "In cross-modal attention from vision to language, which modality produces the queries and which produces the keys and values?", "evidence_pages": [46], "type": "figure"},
+    {"id": "trf09", "source": "lecture5_1-MultimodalTransformers-Part1.pdf", "question": "How does masked self-attention differ from encoder-decoder cross-attention in the transformer decoder?", "evidence_pages": [61], "type": "figure"},
+
+    {"id": "gen01", "source": "Lecture9.1-Generation-Part1.pdf", "question": "What are the three types of multimodal generation introduced in this lecture?", "evidence_pages": [3], "type": "figure"},
+    {"id": "gen02", "source": "Lecture9.1-Generation-Part1.pdf", "question": "How is the multimodal generation challenge defined?", "evidence_pages": [3], "type": "text"},
+    {"id": "gen03", "source": "Lecture9.1-Generation-Part1.pdf", "question": "What are the two main components of DALL-E's text-to-image pipeline?", "evidence_pages": [13, 14], "type": "figure"},
+    {"id": "gen04", "source": "Lecture9.1-Generation-Part1.pdf", "question": "How does DALL-E 2 combine CLIP with diffusion models for image generation?", "evidence_pages": [16, 17], "type": "text"},
+    {"id": "gen05", "source": "Lecture9.1-Generation-Part1.pdf", "question": "How do autoregressive models factorize the probability of an image or sequence?", "evidence_pages": [39, 40], "type": "text"},
+    {"id": "gen06", "source": "Lecture9.1-Generation-Part1.pdf", "question": "What is the creation sub-challenge in multimodal generation?", "evidence_pages": [22], "type": "text"},
+    {"id": "gen07", "source": "Lecture9.1-Generation-Part1.pdf", "question": "How does the Flamingo model scale up the Frozen approach?", "evidence_pages": [48], "type": "text"},
+    {"id": "gen08", "source": "Lecture9.1-Generation-Part1.pdf", "question": "How does prefix tuning condition a frozen language model for tasks like zero-shot VQA?", "evidence_pages": [43, 44], "type": "figure"}
+  ]
+}

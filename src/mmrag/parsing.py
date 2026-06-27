@@ -13,6 +13,7 @@ class PageContent:
     page_number: int  # 1-indexed
     text: str
     images: list[dict[str, Any]] = field(default_factory=list)
+    render_path: str | None = None  # whole-page PNG (slide-render captioning path)
 
 
 @dataclass
@@ -31,11 +32,21 @@ def parse_pdf(
     image_out_dir: str | Path | None = None,
     extract_images: bool = True,
     min_image_size: int = 64,
+    render_pages: bool = False,
+    render_dpi: int = 130,
+    render_out_dir: str | Path | None = None,
 ) -> ParsedDocument:
     """Parse a PDF into per-page text and (optionally) extracted images.
 
-    Images are saved as PNGs under ``image_out_dir`` and referenced by path so
-    later modules (OCR, figure captioning, image embeddings) can pick them up.
+    Two image paths, chosen by the caller:
+    - ``extract_images``: pull each embedded raster (per-figure captioning path).
+    - ``render_pages``: rasterize the *whole page* to one PNG (slide-render path).
+      Slides are text-sparse and figure-heavy; captioning the rendered slide once
+      (~1 Gemini call/page) is far cheaper than captioning every embedded fragment
+      (~10×) and keeps the diagram in its on-slide context. See PROPOSAL.md §5.1.
+
+    Saved PNGs are referenced by path so later modules (OCR, captioning, image
+    embeddings) can pick them up.
     """
     pdf_path = Path(pdf_path)
     if not pdf_path.exists():
@@ -51,11 +62,34 @@ def parse_pdf(
                 images = _extract_page_images(
                     doc, page, i + 1, pdf_path.stem, Path(image_out_dir), min_image_size
                 )
-            pages.append(PageContent(page_number=i + 1, text=text, images=images))
+            render_path = None
+            if render_pages and render_out_dir is not None:
+                render_path = _render_page(
+                    page, i + 1, pdf_path.stem, Path(render_out_dir), render_dpi
+                )
+            pages.append(
+                PageContent(
+                    page_number=i + 1, text=text, images=images, render_path=render_path
+                )
+            )
     finally:
         doc.close()
 
     return ParsedDocument(source=pdf_path.name, path=str(pdf_path), pages=pages)
+
+
+def _render_page(
+    page: "fitz.Page", page_number: int, stem: str, out_dir: Path, dpi: int
+) -> str | None:
+    """Rasterize a whole page to a PNG and return its path (None on failure)."""
+    out_dir.mkdir(parents=True, exist_ok=True)
+    fpath = out_dir / f"{stem}_p{page_number}.png"
+    try:
+        pix = page.get_pixmap(dpi=dpi)
+        pix.save(fpath)
+        return str(fpath)
+    except Exception:
+        return None
 
 
 def _extract_page_images(
