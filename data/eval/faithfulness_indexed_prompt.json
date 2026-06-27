@@ -1,0 +1,1065 @@
+{
+  "gold": "slide_corpus_4decks",
+  "rerank": true,
+  "metrics": {
+    "n": 33,
+    "n_citing": 32,
+    "n_abstained": 1,
+    "total_citations": 143,
+    "total_leaked": 32,
+    "citation_precision": 0.8494791666666667,
+    "citation_recall": 0.7833333333333333,
+    "micro_precision": 0.7762237762237763,
+    "micro_leakage": 0.22377622377622375,
+    "leakage_rate": 0.25,
+    "abstention_rate": 0.030303030303030304
+  },
+  "ci": {
+    "citation_precision": [
+      0.735390625,
+      0.946969696969697
+    ],
+    "leakage_rate": [
+      0.09991935483870969,
+      0.41944789081885847
+    ],
+    "citation_recall": [
+      0.6550431034482759,
+      0.9
+    ]
+  },
+  "rows": [
+    {
+      "cited_pages": [
+        7,
+        100,
+        7,
+        100,
+        7,
+        100,
+        52,
+        14,
+        7,
+        100
+      ],
+      "leaked_pages": [],
+      "evidence_pages": [
+        7,
+        14,
+        44,
+        52,
+        100
+      ],
+      "retrievable_gold": [
+        7
+      ],
+      "n_cited": 10,
+      "n_valid": 10,
+      "n_leaked": 0,
+      "n_retrievable_gold": 1,
+      "abstained": false,
+      "has_leak": false,
+      "precision": 1.0,
+      "recall": 1.0,
+      "id": "fus01",
+      "type": "figure",
+      "source": "lecture3_1-MultimodalFusion.pdf",
+      "answer": "The three sub-challenges of multimodal representation are Fusion, Coordination, and Fission [p7, p100].\n\n*   **Fusion:** Multiple modalities are combined to produce a single representation, where the number of modalities is greater than the number of representations (# modalities > # representations) [p7, p100].\n*   **Coordination:** Modalities are processed independently to produce corresponding representations, where the number of modalities is equal to the number of representations (# modalities = # representations) [p7, p100]. This involves learning multimodally-contextualized representations that are coordinated through their cross-modal interactions [p52, p14].\n*   **Fission:** One modality is used to generate multiple representations, where the number of modalities is less than the number of representations (# modalities < # representations) [p7, p100]."
+    },
+    {
+      "cited_pages": [
+        99,
+        42,
+        59,
+        4,
+        52
+      ],
+      "leaked_pages": [
+        4
+      ],
+      "evidence_pages": [
+        10,
+        42,
+        52,
+        59,
+        99
+      ],
+      "retrievable_gold": [
+        42
+      ],
+      "n_cited": 5,
+      "n_valid": 4,
+      "n_leaked": 1,
+      "n_retrievable_gold": 1,
+      "abstained": false,
+      "has_leak": true,
+      "precision": 0.8,
+      "recall": 1.0,
+      "id": "fus02",
+      "type": "figure",
+      "source": "lecture3_1-MultimodalFusion.pdf",
+      "answer": "The provided evidence does not explicitly detail how additive fusion differs from multiplicative fusion. However, it does mention both as types of representation fusion [p99]. Additive fusion can be represented as $z = f_A + f_B$ or $z = w_1x_A + w_2x_B$ [p42], and also as $y_0 = f_A x_A + f_B x_B$ [p59, p4]. Multiplicative fusion is mentioned alongside additive fusion in the context of going beyond these methods to include interaction terms like $w_3 x_A \\times x_B$ [p52]."
+    },
+    {
+      "cited_pages": [
+        44,
+        44,
+        3,
+        2
+      ],
+      "leaked_pages": [
+        2,
+        3
+      ],
+      "evidence_pages": [
+        7,
+        44,
+        51,
+        52
+      ],
+      "retrievable_gold": [
+        44
+      ],
+      "n_cited": 4,
+      "n_valid": 2,
+      "n_leaked": 2,
+      "n_retrievable_gold": 1,
+      "abstained": false,
+      "has_leak": true,
+      "precision": 0.5,
+      "recall": 1.0,
+      "id": "fus03",
+      "type": "figure",
+      "source": "lecture3_1-MultimodalFusion.pdf",
+      "answer": "Tensor fusion is a method for combining multiple unimodal inputs into a tensor [p44]. For bimodal tensor fusion, two unimodal inputs, represented by vectors $x_A$ and $x_B$, are combined into a tensor $Z$ through a multiplicative fusion process. The computation is described by the equation $Z = w([x_A \\ 1]^T \\otimes [x_B \\ 1])$, where $w$ is a weight matrix and $\\otimes$ denotes the outer product [p44, p3, p2]."
+    },
+    {
+      "cited_pages": [
+        50
+      ],
+      "leaked_pages": [],
+      "evidence_pages": [
+        45,
+        48,
+        50,
+        51
+      ],
+      "retrievable_gold": [
+        45
+      ],
+      "n_cited": 1,
+      "n_valid": 1,
+      "n_leaked": 0,
+      "n_retrievable_gold": 1,
+      "abstained": false,
+      "has_leak": false,
+      "precision": 1.0,
+      "recall": 0.0,
+      "id": "fus04",
+      "type": "figure",
+      "source": "lecture3_1-MultimodalFusion.pdf",
+      "answer": "The provided evidence does not explicitly state what problem low-rank multimodal fusion (LMF) solves compared to plain tensor fusion. It describes the processes of both methods but does not offer a comparative analysis of their problem-solving capabilities [p50]."
+    },
+    {
+      "cited_pages": [
+        54,
+        54,
+        54,
+        55
+      ],
+      "leaked_pages": [],
+      "evidence_pages": [
+        25,
+        54,
+        55,
+        81
+      ],
+      "retrievable_gold": [
+        54
+      ],
+      "n_cited": 4,
+      "n_valid": 4,
+      "n_leaked": 0,
+      "n_retrievable_gold": 1,
+      "abstained": false,
+      "has_leak": false,
+      "precision": 1.0,
+      "recall": 1.0,
+      "id": "fus05",
+      "type": "text",
+      "source": "lecture3_1-MultimodalFusion.pdf",
+      "answer": "Gated fusion involves processing two modalities, Modality A and Modality B, through gate functions. The output of each modality is then element-wise multiplied with a corresponding weight array derived from the gate output. These weighted outputs are then fused to produce a single output [p54]. An example of additive fusion is represented by the equation $z = g_A(x_A, x_B) * x_A + g_B(x_A, x_B) * x_B$, where $g_A$ and $g_B$ are gating functions that depend on both modalities $x_A$ and $x_B$ [p54]. These gating functions, $g_A$ and $g_B$, can be viewed as attention functions [p54]. A gating module, also known as an attention module, is a neural network designed to mask unwanted signals or select preferable signals [p55]."
+    },
+    {
+      "cited_pages": [
+        51,
+        35
+      ],
+      "leaked_pages": [],
+      "evidence_pages": [
+        35,
+        42,
+        51,
+        92,
+        99
+      ],
+      "retrievable_gold": [
+        35
+      ],
+      "n_cited": 2,
+      "n_valid": 2,
+      "n_leaked": 0,
+      "n_retrievable_gold": 1,
+      "abstained": false,
+      "has_leak": false,
+      "precision": 1.0,
+      "recall": 1.0,
+      "id": "fus06",
+      "type": "figure",
+      "source": "lecture3_1-MultimodalFusion.pdf",
+      "answer": "Early fusion involves concatenating modalities A and B before making a prediction, while late fusion involves making separate predictions for modality A and modality B, and then combining these predictions to form a final prediction [p51, p35]."
+    },
+    {
+      "cited_pages": [
+        19,
+        19,
+        5,
+        19,
+        21,
+        5,
+        5
+      ],
+      "leaked_pages": [],
+      "evidence_pages": [
+        5,
+        18,
+        19,
+        21,
+        23
+      ],
+      "retrievable_gold": [
+        19,
+        23
+      ],
+      "n_cited": 7,
+      "n_valid": 7,
+      "n_leaked": 0,
+      "n_retrievable_gold": 2,
+      "abstained": false,
+      "has_leak": false,
+      "precision": 1.0,
+      "recall": 0.5,
+      "id": "fus07",
+      "type": "text",
+      "source": "lecture3_1-MultimodalFusion.pdf",
+      "answer": "Raw-modality fusion processes modalities independently before attention, preserving their original characteristics, while homogeneous fusion converts all modalities to a common format before further processing [p19]. Raw-modality fusion preserves modality-specific features [p19], handles heterogeneous data formats more effectively, offers flexible handling of incomplete inputs through masking or attention mechanisms, provides clear insights into cross-modal interactions at the raw feature level, and requires low computational resources by avoiding heavy transformations or shared latent space overhead [p5]. Homogeneous fusion transforms all modalities to a common format [p19] and requires data imputation to estimate missing values to maintain homogeneous projection [p21].\n\nRaw-modality fusion should be used when flexibility and preserving original data characteristics are paramount [p5]. This includes scenarios with heterogeneous data formats, when preservation of features is critical (e.g., in medical imaging and genomics), when dealing with missing data, for interpretability, and when computational resources are low [p5]."
+    },
+    {
+      "cited_pages": [
+        31,
+        31,
+        33,
+        33,
+        33
+      ],
+      "leaked_pages": [],
+      "evidence_pages": [
+        31,
+        32,
+        33,
+        48,
+        49
+      ],
+      "retrievable_gold": [
+        31,
+        33
+      ],
+      "n_cited": 5,
+      "n_valid": 5,
+      "n_leaked": 0,
+      "n_retrievable_gold": 2,
+      "abstained": false,
+      "has_leak": false,
+      "precision": 1.0,
+      "recall": 1.0,
+      "id": "fus08",
+      "type": "text",
+      "source": "lecture3_1-MultimodalFusion.pdf",
+      "answer": "FuseMix achieves data-efficient multimodal fusion on a single GPU by keeping pre-trained unimodal encoders frozen and training only lightweight adapters to align latent spaces using contrastive learning and multimodal mixup [p31]. This approach involves freezing image, text, and audio encoders, and training only the lightweight fusion adapters [p31]. The method utilizes a contrastive objective where adapter outputs for matching image-text pairs are pulled close, while non-matching pairs are pushed apart, using an InfoNCE loss [p33]. Additionally, multimodal mixup interpolates between latent representations of different pairs to generate synthetic training examples, which is crucial for data efficiency [p33]. This strategy results in significantly fewer GPU days and training pairs compared to other state-of-the-art methods [p33]."
+    },
+    {
+      "cited_pages": [
+        6,
+        7,
+        3,
+        2,
+        3,
+        5,
+        2,
+        3,
+        5,
+        2,
+        3,
+        6
+      ],
+      "leaked_pages": [
+        2,
+        3,
+        5
+      ],
+      "evidence_pages": [
+        6,
+        7,
+        28
+      ],
+      "retrievable_gold": [
+        6,
+        7
+      ],
+      "n_cited": 12,
+      "n_valid": 3,
+      "n_leaked": 3,
+      "n_retrievable_gold": 2,
+      "abstained": false,
+      "has_leak": true,
+      "precision": 0.25,
+      "recall": 1.0,
+      "id": "ali01",
+      "type": "text",
+      "source": "lecture4.1-MultimodalAlignment.pdf",
+      "answer": "CLIP uses the InfoNCE contrastive loss to learn coordinated representations [p6, p7, p3]. The positive pairs are the similarity between corresponding representations, $\\text{sim}(z_A^i, z_B^i)$ [p2, p3, p5]. The negative pairs and positive pairs are represented by the denominator in the InfoNCE equation, $\\sum_{j=1}^{N} \\exp(\\text{sim}(z_A^i, z_B^j)/\\tau)$ [p2, p3, p5]. The similarity function can be cosine similarity [p2, p3, p6]."
+    },
+    {
+      "cited_pages": [
+        53,
+        54,
+        27
+      ],
+      "leaked_pages": [],
+      "evidence_pages": [
+        9,
+        27,
+        53,
+        54,
+        62
+      ],
+      "retrievable_gold": [],
+      "n_cited": 3,
+      "n_valid": 3,
+      "n_leaked": 0,
+      "n_retrievable_gold": 0,
+      "abstained": false,
+      "has_leak": false,
+      "precision": 1.0,
+      "recall": null,
+      "id": "ali02",
+      "type": "text",
+      "source": "lecture4.1-MultimodalAlignment.pdf",
+      "answer": "The provided evidence does not contain information that directly defines \"language grounding in multimodal alignment.\" However, it does mention \"Grounding Frozen LMs to Images\" in the context of multimodal inputs and outputs [p53, p54]. This suggests a process where language models are connected or aligned with visual information. Additionally, the evidence describes \"Global Alignment\" between \"Visual\" and \"Language\" modalities, involving encoding each modality into latent representations and then applying a coordination function to map elements from one modality to the other [p27]."
+    },
+    {
+      "cited_pages": [
+        53,
+        53,
+        29,
+        53,
+        29,
+        53,
+        29,
+        53
+      ],
+      "leaked_pages": [],
+      "evidence_pages": [
+        2,
+        28,
+        29,
+        53
+      ],
+      "retrievable_gold": [
+        28,
+        29
+      ],
+      "n_cited": 8,
+      "n_valid": 8,
+      "n_leaked": 0,
+      "n_retrievable_gold": 2,
+      "abstained": false,
+      "has_leak": false,
+      "precision": 1.0,
+      "recall": 0.5,
+      "id": "ali03",
+      "type": "figure",
+      "source": "lecture4.1-MultimodalAlignment.pdf",
+      "answer": "The assignment problem is typically for equal-sized sets and involves a 1-to-1 matching where each element needs exactly one partner [p53]. It assumes a one-to-one \"hard\" alignment between elements, and all elements are assigned, forming a \"perfect matching\" [p53, p29]. In contrast, optimal transport can handle different set sizes and partial correspondence, allowing for many-to-many matching [p53, p29]. It uses a continuous plan where mass can be split, enabling soft or weighted matching [p53, p29]. The rule of thumb is that if one exact partner is needed for each element, it's an assignment problem; if partial, weighted, or unequal matching is needed, it's optimal transport [p53]."
+    },
+    {
+      "cited_pages": [
+        34,
+        7,
+        34,
+        7
+      ],
+      "leaked_pages": [],
+      "evidence_pages": [
+        6,
+        7,
+        33,
+        34
+      ],
+      "retrievable_gold": [
+        34
+      ],
+      "n_cited": 4,
+      "n_valid": 4,
+      "n_leaked": 0,
+      "n_retrievable_gold": 1,
+      "abstained": false,
+      "has_leak": false,
+      "precision": 1.0,
+      "recall": 1.0,
+      "id": "ali04",
+      "type": "figure",
+      "source": "lecture4.1-MultimodalAlignment.pdf",
+      "answer": "A Dynamic Time Warping path must satisfy the following restrictions: monotonicity (no going back in time), continuity (no gaps), boundary conditions (start and end at the same points), a warping window (don't get too far from the diagonal), and a slope constraint (do not insert or skip too much) [p34, p7]. These restrictions are respected when solving using dynamic programming [p34, p7]."
+    },
+    {
+      "cited_pages": [
+        2,
+        3,
+        4,
+        5,
+        2,
+        3,
+        2,
+        3,
+        2,
+        3,
+        4,
+        5
+      ],
+      "leaked_pages": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "evidence_pages": [
+        18,
+        19,
+        52
+      ],
+      "retrievable_gold": [
+        19,
+        52
+      ],
+      "n_cited": 12,
+      "n_valid": 0,
+      "n_leaked": 4,
+      "n_retrievable_gold": 2,
+      "abstained": false,
+      "has_leak": true,
+      "precision": 0.0,
+      "recall": 0.0,
+      "id": "ali05",
+      "type": "figure",
+      "source": "lecture4.1-MultimodalAlignment.pdf",
+      "answer": "Hard attention selects \"one discrete glimpse / region\" and uses \"gates (0/1)\" [p2, p3, p4, p5]. It usually needs sampling for training and is useful when compute is limited [p2, p3]. In contrast, soft attention involves a \"weighted average of all locations\" and uses a distribution over all locations [p2, p3]. It is fully differentiable end-to-end and is the default in seq2seq models and transformers [p2, p3]. Hard attention can be seen as discrete layers between differentiable neural net layers [p4, p5]."
+    },
+    {
+      "cited_pages": [
+        55,
+        55,
+        55,
+        55
+      ],
+      "leaked_pages": [],
+      "evidence_pages": [
+        14,
+        44,
+        55
+      ],
+      "retrievable_gold": [
+        44,
+        55
+      ],
+      "n_cited": 4,
+      "n_valid": 4,
+      "n_leaked": 0,
+      "n_retrievable_gold": 2,
+      "abstained": false,
+      "has_leak": false,
+      "precision": 1.0,
+      "recall": 0.5,
+      "id": "ali06",
+      "type": "figure",
+      "source": "lecture4.1-MultimodalAlignment.pdf",
+      "answer": "The CTC collapse rule transforms per-frame predictions into a final label sequence through a three-step process. First, the network emits a per-frame path, which is a sequence of labels and blank tokens ($\\emptyset$). For example, $\\emptyset$, t, t, ah, $\\emptyset$, m, aa, aa, t, ow, $\\emptyset$ [p55]. Second, consecutive duplicate labels are collapsed, merging repeated labels. This transforms the example sequence into $\\emptyset$, t, ah, $\\emptyset$, m, aa, t, ow, $\\emptyset$ [p55]. Third, blank tokens are removed to produce the final label sequence, resulting in t, ah, m, aa, t, ow [p55]. This process is beneficial because it does not require pre-segmented boundaries, instead using per-time-step distributions and summing over all paths that collapse to the same label sequence. The blank token also absorbs duration differences, allowing CTC to elegantly solve the \"many frames $\\rightarrow$ one label\" problem [p55]."
+    },
+    {
+      "cited_pages": [
+        16,
+        47,
+        3,
+        15,
+        59
+      ],
+      "leaked_pages": [],
+      "evidence_pages": [
+        3,
+        15,
+        16,
+        47,
+        59
+      ],
+      "retrievable_gold": [
+        15,
+        47
+      ],
+      "n_cited": 5,
+      "n_valid": 5,
+      "n_leaked": 0,
+      "n_retrievable_gold": 2,
+      "abstained": false,
+      "has_leak": false,
+      "precision": 1.0,
+      "recall": 1.0,
+      "id": "ali07",
+      "type": "figure",
+      "source": "lecture4.1-MultimodalAlignment.pdf",
+      "answer": "The sub-challenges of Challenge 2: Alignment are: Discrete Alignment, Contextualized Representation Alignment + representation, Continuous Alignment, Discrete elements and connections, and Segmentation and continuous warping [p16, p47, p3, p15]. Another phrasing of the sub-challenges includes: Connections, Aligned Representation Elements, Explicit alignment (e.g., grounding), Alignment + representation (aka, contextualized representation), and Segmentation of individual elements [p59]."
+    },
+    {
+      "cited_pages": [
+        60,
+        60,
+        63,
+        60,
+        63
+      ],
+      "leaked_pages": [
+        63
+      ],
+      "evidence_pages": [
+        7,
+        60,
+        64
+      ],
+      "retrievable_gold": [
+        60
+      ],
+      "n_cited": 5,
+      "n_valid": 3,
+      "n_leaked": 1,
+      "n_retrievable_gold": 1,
+      "abstained": false,
+      "has_leak": true,
+      "precision": 0.6,
+      "recall": 1.0,
+      "id": "ali08",
+      "type": "text",
+      "source": "lecture4.1-MultimodalAlignment.pdf",
+      "answer": "SigLIP 2 outperforms earlier SigLIP models on zero-shot classification, image-text retrieval, and transfer. It also improves localization and dense prediction, not just global matching, and supports multiple resolutions while preserving native aspect ratio [p60]. The core recipe of SigLIP 2 involves captioning-based pretraining, self-distillation with masked prediction, and online data curation, with global image-text coordination remaining the backbone [p60, p63]. The lesson learned is that auxiliary objectives transform image-text embeddings into stronger grounding features [p60, p63]."
+    },
+    {
+      "cited_pages": [
+        2
+      ],
+      "leaked_pages": [
+        2
+      ],
+      "evidence_pages": [
+        4,
+        6,
+        10,
+        15
+      ],
+      "retrievable_gold": [
+        4
+      ],
+      "n_cited": 1,
+      "n_valid": 0,
+      "n_leaked": 1,
+      "n_retrievable_gold": 1,
+      "abstained": false,
+      "has_leak": true,
+      "precision": 0.0,
+      "recall": 0.0,
+      "id": "trf01",
+      "type": "text",
+      "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+      "answer": "Self-attention, without position information, treats reordered inputs as the same pattern, only permuted. Position embeddings are needed to inject order into the input because token order is not encoded by default [p2]."
+    },
+    {
+      "cited_pages": [
+        23
+      ],
+      "leaked_pages": [],
+      "evidence_pages": [
+        2,
+        23,
+        29,
+        34
+      ],
+      "retrievable_gold": [
+        23
+      ],
+      "n_cited": 1,
+      "n_valid": 1,
+      "n_leaked": 0,
+      "n_retrievable_gold": 1,
+      "abstained": false,
+      "has_leak": false,
+      "precision": 1.0,
+      "recall": 1.0,
+      "id": "trf02",
+      "type": "figure",
+      "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+      "answer": "BERT's input representation is formed by summing token embedding, position embedding, and segment embedding [p23]."
+    },
+    {
+      "cited_pages": [
+        3,
+        2,
+        1,
+        3,
+        3
+      ],
+      "leaked_pages": [
+        1,
+        3
+      ],
+      "evidence_pages": [
+        2,
+        24,
+        46,
+        66
+      ],
+      "retrievable_gold": [
+        24
+      ],
+      "n_cited": 5,
+      "n_valid": 1,
+      "n_leaked": 2,
+      "n_retrievable_gold": 1,
+      "abstained": false,
+      "has_leak": true,
+      "precision": 0.2,
+      "recall": 0.0,
+      "id": "trf03",
+      "type": "text",
+      "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+      "answer": "The Masked Language Model pre-training task for BERT involves randomly masking input tokens and then attempting to predict them [p3, p2, p1]. The process uses a Transformer Self-Attention mechanism to process the input sequence and predict the masked tokens [p3]. The diagram illustrates this by showing an input sequence with masked tokens, arrows pointing to predicted words, and representations of tokens and their corresponding words [p3]."
+    },
+    {
+      "cited_pages": [
+        27,
+        26,
+        27,
+        47,
+        26,
+        27,
+        47
+      ],
+      "leaked_pages": [],
+      "evidence_pages": [
+        26,
+        27,
+        47,
+        57
+      ],
+      "retrievable_gold": [
+        26,
+        27
+      ],
+      "n_cited": 7,
+      "n_valid": 7,
+      "n_leaked": 0,
+      "n_retrievable_gold": 2,
+      "abstained": false,
+      "has_leak": false,
+      "precision": 1.0,
+      "recall": 1.0,
+      "id": "trf04",
+      "type": "text",
+      "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+      "answer": "The Next Sentence Prediction task involves predicting whether sentence B follows sentence A [p27]. Given two sentences, the task is to predict if one is the next sentence or not [p26, p27, p47]. The prediction is either \"IsNext\" or \"NotNext\" [p26, p27, p47]."
+    },
+    {
+      "cited_pages": [
+        37
+      ],
+      "leaked_pages": [],
+      "evidence_pages": [
+        5,
+        7,
+        37,
+        42,
+        103
+      ],
+      "retrievable_gold": [
+        37
+      ],
+      "n_cited": 1,
+      "n_valid": 1,
+      "n_leaked": 0,
+      "n_retrievable_gold": 1,
+      "abstained": false,
+      "has_leak": false,
+      "precision": 1.0,
+      "recall": 1.0,
+      "id": "trf05",
+      "type": "text",
+      "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+      "answer": "The three design patterns for multimodal transformers are: one-stream, cross-modal, and modality-shift [p37]."
+    },
+    {
+      "cited_pages": [
+        40
+      ],
+      "leaked_pages": [],
+      "evidence_pages": [
+        39,
+        40,
+        47
+      ],
+      "retrievable_gold": [
+        40
+      ],
+      "n_cited": 1,
+      "n_valid": 1,
+      "n_leaked": 0,
+      "n_retrievable_gold": 1,
+      "abstained": false,
+      "has_leak": false,
+      "precision": 1.0,
+      "recall": 1.0,
+      "id": "trf06",
+      "type": "figure",
+      "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+      "answer": "In one-stream encoders like VisualBERT and UNITER, text tokens and image regions are combined into a single joint sequence. This joint sequence then undergoes a shared Transformer Encoder, which performs full self-attention across both text and image tokens to produce joint text-image representations [p40]."
+    },
+    {
+      "cited_pages": [
+        49,
+        49,
+        49,
+        48,
+        47
+      ],
+      "leaked_pages": [],
+      "evidence_pages": [
+        47,
+        48,
+        49
+      ],
+      "retrievable_gold": [
+        49
+      ],
+      "n_cited": 5,
+      "n_valid": 5,
+      "n_leaked": 0,
+      "n_retrievable_gold": 1,
+      "abstained": false,
+      "has_leak": false,
+      "precision": 1.0,
+      "recall": 1.0,
+      "id": "trf07",
+      "type": "figure",
+      "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+      "answer": "ViLBERT has a \"Language stream\" and a \"Vision stream\" that exchange information through co-attention layers [p49]. LXMERT has a \"Language encoder\" and an \"Object encoder\" which feed into a \"Cross-modality encoder\" [p49]. Both models utilize separate streams and cross-modal attention [p49]. LXMERT's Cross-Modal Transformer Modules contain \"Cross\" attention layers for inter-modality interaction, followed by \"Self\" attention layers within each modality [p48]. ViLBERT's Cross-Modal Transformer Modules contain \"Co-TRM\" (Co-attention Transformer) layers that facilitate interaction between visual and textual representations [p47]."
+    },
+    {
+      "cited_pages": [
+        46,
+        46
+      ],
+      "leaked_pages": [],
+      "evidence_pages": [
+        19,
+        45,
+        46,
+        48
+      ],
+      "retrievable_gold": [
+        46
+      ],
+      "n_cited": 2,
+      "n_valid": 2,
+      "n_leaked": 0,
+      "n_retrievable_gold": 1,
+      "abstained": false,
+      "has_leak": false,
+      "precision": 1.0,
+      "recall": 1.0,
+      "id": "trf08",
+      "type": "figure",
+      "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+      "answer": "In cross-modal attention from vision to language, language tokens produce the queries (Q), while visual regions produce the keys (K) and values (V) [p46]. The query comes from the modality that is being updated, which in this case is language [p46]."
+    },
+    {
+      "cited_pages": [
+        61,
+        61,
+        61
+      ],
+      "leaked_pages": [],
+      "evidence_pages": [
+        60,
+        61,
+        62
+      ],
+      "retrievable_gold": [
+        61
+      ],
+      "n_cited": 3,
+      "n_valid": 3,
+      "n_leaked": 0,
+      "n_retrievable_gold": 1,
+      "abstained": false,
+      "has_leak": false,
+      "precision": 1.0,
+      "recall": 1.0,
+      "id": "trf09",
+      "type": "figure",
+      "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+      "answer": "Masked self-attention in the decoder attends only to previous target tokens, blocking future tokens [p61]. In contrast, encoder-decoder cross-attention allows decoder queries to attend to all encoder outputs [p61]. The decoder utilizes both masked self-attention and cross-attention [p61]."
+    },
+    {
+      "cited_pages": [],
+      "leaked_pages": [],
+      "evidence_pages": [
+        1,
+        4,
+        5,
+        55
+      ],
+      "retrievable_gold": [],
+      "n_cited": 0,
+      "n_valid": 0,
+      "n_leaked": 0,
+      "n_retrievable_gold": 0,
+      "abstained": true,
+      "has_leak": false,
+      "precision": null,
+      "recall": null,
+      "id": "gen01",
+      "type": "figure",
+      "source": "Lecture9.1-Generation-Part1.pdf",
+      "answer": "This document does not contain the answer to this question."
+    },
+    {
+      "cited_pages": [
+        75
+      ],
+      "leaked_pages": [],
+      "evidence_pages": [
+        4,
+        6,
+        44,
+        75,
+        104
+      ],
+      "retrievable_gold": [],
+      "n_cited": 1,
+      "n_valid": 1,
+      "n_leaked": 0,
+      "n_retrievable_gold": 0,
+      "abstained": false,
+      "has_leak": false,
+      "precision": 1.0,
+      "recall": null,
+      "id": "gen02",
+      "type": "text",
+      "source": "Lecture9.1-Generation-Part1.pdf",
+      "answer": "The multimodal generation challenge is defined as learning a generative process to produce new data while maintaining cross-modal interactions, structure, and coherence. This challenge covers tasks such as summarization, translation, and creative generation across multiple modalities [p75]."
+    },
+    {
+      "cited_pages": [
+        13,
+        13,
+        13
+      ],
+      "leaked_pages": [],
+      "evidence_pages": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "retrievable_gold": [
+        13,
+        14
+      ],
+      "n_cited": 3,
+      "n_valid": 3,
+      "n_leaked": 0,
+      "n_retrievable_gold": 2,
+      "abstained": false,
+      "has_leak": false,
+      "precision": 1.0,
+      "recall": 0.5,
+      "id": "gen03",
+      "type": "figure",
+      "source": "Lecture9.1-Generation-Part1.pdf",
+      "answer": "The two main components of DALL-E's text-to-image pipeline are the \"Discrete VAE\" and the \"Autoregressive Transformer\" [p13]. The Discrete VAE is responsible for image encoding and decoding [p13]. The Autoregressive Transformer processes text and generates a sequence that guides the image generation process [p13]."
+    },
+    {
+      "cited_pages": [
+        17,
+        17,
+        17,
+        17,
+        17,
+        17
+      ],
+      "leaked_pages": [],
+      "evidence_pages": [
+        16,
+        17,
+        80,
+        81
+      ],
+      "retrievable_gold": [
+        16,
+        17
+      ],
+      "n_cited": 6,
+      "n_valid": 6,
+      "n_leaked": 0,
+      "n_retrievable_gold": 2,
+      "abstained": false,
+      "has_leak": false,
+      "precision": 1.0,
+      "recall": 0.5,
+      "id": "gen04",
+      "type": "text",
+      "source": "Lecture9.1-Generation-Part1.pdf",
+      "answer": "DALL-E 2 combines CLIP with diffusion models through a two-part process: Content Coordination and Generation [p17]. Part A, \"Content,\" uses \"Coordination via CLIP similarity\" to \"Capture corresponding cross-modal interactions\" [p17]. This is illustrated by a text prompt, such as \"An armchair in the shape of an avocado,\" which leads to interactions between red triangles and blue circles [p17]. Part B, \"Generation,\" is described as \"Fully generative (diffusion models)\" [p17]. The blue circles from Part A are then used by diffusion models to generate an image [p17]. The overall process involves using CLIP to process text prompts for content similarity, and then employing diffusion models to generate images based on this information [p17]."
+    },
+    {
+      "cited_pages": [
+        39,
+        40,
+        41
+      ],
+      "leaked_pages": [],
+      "evidence_pages": [
+        39,
+        40,
+        41,
+        57,
+        59
+      ],
+      "retrievable_gold": [
+        39,
+        40
+      ],
+      "n_cited": 3,
+      "n_valid": 3,
+      "n_leaked": 0,
+      "n_retrievable_gold": 2,
+      "abstained": false,
+      "has_leak": false,
+      "precision": 1.0,
+      "recall": 1.0,
+      "id": "gen05",
+      "type": "text",
+      "source": "Lecture9.1-Generation-Part1.pdf",
+      "answer": "Autoregressive models factorize the probability of an image $\\mathbf{x}$ as a product of conditional probabilities of each pixel $x_i$ given all preceding pixels, defined by the equation $p(\\mathbf{x}) = \\prod_{i=1}^{n^2} p(x_i | x_1, \\dots, x_{i-1})$ [p39]. Similarly, for a sequence of tokens $x$, the probability is defined as the product of conditional probabilities of each token given the preceding tokens: $p(x) = \\prod_{t=1}^{T} p(x_t | x_1, \\dots, x_{t-1})$ [p40, p41]."
+    },
+    {
+      "cited_pages": [
+        82,
+        22,
+        82,
+        22,
+        85,
+        27
+      ],
+      "leaked_pages": [],
+      "evidence_pages": [
+        22,
+        27,
+        75,
+        82,
+        85
+      ],
+      "retrievable_gold": [
+        22
+      ],
+      "n_cited": 6,
+      "n_valid": 6,
+      "n_leaked": 0,
+      "n_retrievable_gold": 1,
+      "abstained": false,
+      "has_leak": false,
+      "precision": 1.0,
+      "recall": 1.0,
+      "id": "gen06",
+      "type": "text",
+      "source": "Lecture9.1-Generation-Part1.pdf",
+      "answer": "The creation sub-challenge involves simultaneously generating multiple modalities to increase information content while maintaining coherence within and across modalities [p82, p22]. This includes challenges like cross-modal interactions, temporal, causal, and logical structure, and recalling representation, alignment, and reasoning [p82, p22]. Initial attempts at this sub-challenge include factorized generation [p85, p27]."
+    },
+    {
+      "cited_pages": [
+        48
+      ],
+      "leaked_pages": [],
+      "evidence_pages": [
+        34,
+        48,
+        64
+      ],
+      "retrievable_gold": [
+        48
+      ],
+      "n_cited": 1,
+      "n_valid": 1,
+      "n_leaked": 0,
+      "n_retrievable_gold": 1,
+      "abstained": false,
+      "has_leak": false,
+      "precision": 1.0,
+      "recall": 1.0,
+      "id": "gen07",
+      "type": "text",
+      "source": "Lecture9.1-Generation-Part1.pdf",
+      "answer": "Flamingo scales up Frozen with much bigger models (80B parameter LMs), cross-attention, and richer training data [p48]."
+    },
+    {
+      "cited_pages": [
+        44,
+        5,
+        43,
+        44,
+        45,
+        46
+      ],
+      "leaked_pages": [
+        5
+      ],
+      "evidence_pages": [
+        43,
+        44,
+        45,
+        46
+      ],
+      "retrievable_gold": [
+        43,
+        44
+      ],
+      "n_cited": 6,
+      "n_valid": 5,
+      "n_leaked": 1,
+      "n_retrievable_gold": 2,
+      "abstained": false,
+      "has_leak": true,
+      "precision": 0.8333333333333334,
+      "recall": 1.0,
+      "id": "gen08",
+      "type": "figure",
+      "source": "Lecture9.1-Generation-Part1.pdf",
+      "answer": "Prefix tuning conditions autoregressive models. For zero-shot VQA, one approach involves a model that predicts $p(x|c)$ (probability of image $x$ given condition $c$), which is conditioned on \"Blue\" [p44, p5]. Another approach models $p(x|c)$ using an \"Adapted + pretrained Adapter\" [p43]. This method can be used for zero-shot VQA, where the question \"What color is the car?\" is posed, and the model predicts \"Blue\" [p44]. It can also be used for 1-shot VQA, leveraging implicit knowledge in LMs [p45]. Additionally, prefix tuning can be applied to few-shot image classification [p46]."
+    }
+  ]
+}

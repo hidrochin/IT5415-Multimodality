@@ -164,6 +164,34 @@ text-only 0.680 [0.554, 0.800]) — the lift is **consistent across metrics and
 retrievers but not statistically separated**; a larger gold set is needed to
 tighten it ([PROPOSAL.md](PROPOSAL.md) §6.4, §7.2).
 
+## Faithfulness — does the answer stay inside the evidence?
+
+Retrieval recall asks whether the evidence is *found*; faithfulness asks whether
+the answer stays *inside* it. `scripts/faithfulness.py` generates a grounded
+answer for every gold question, then scores its `[pN]` citations against the
+evidence the model was actually shown — **citation precision**, **leakage rate**
+(answers citing a page never shown), and a page-level **citation recall** proxy:
+
+```powershell
+python scripts/faithfulness.py --gold data/eval/slides_qa.json
+```
+
+The metric immediately caught a **prompt bug, not a model failure**: the evidence
+header used to be numbered `[Evidence 1 | … | p7]`, giving the model two integers
+per passage, and the cheap QA model often cited the *evidence index* as if it were
+a page (evidence 1–5 → `[p2, p3, p4, p5]`). Making the page the only citable number
+in the header (`[source=… | p7]`) eliminates it:
+
+| Evidence header              | Citation precision   | Leakage rate         | Leaked citations |
+| ---------------------------- | -------------------- | -------------------- | ---------------- |
+| `[Evidence i | … | pN]`       | 0.849 [0.735, 0.947] | 0.250 [0.100, 0.419] | 32 / 143         |
+| `[source=… | pN]` (current)  | **1.000 [1.00, 1.00]** | **0.000 [0.00, 0.00]** | **0 / 138**    |
+
+After the fix, **0 of 138 citations** leak across the gold set and citation recall
+rises 0.78→0.90 (95% bootstrap CIs; 2/33 answers abstain when evidence is thin).
+The takeaway: a faithfulness metric probes the *prompt* as much as the model
+([PROPOSAL.md](PROPOSAL.md) §7.3).
+
 ## Roadmap (maps to [PROPOSAL.md](PROPOSAL.md) §10)
 
 - [x] **Phase 1 — text RAG MVP**: parsing, chunking, embeddings, FAISS, grounded QA
@@ -176,7 +204,8 @@ tighten it ([PROPOSAL.md](PROPOSAL.md) §6.4, §7.2).
 - [x] **Gold QA over the slide decks** (33 pairs) + **source-aware slide retrieval eval** — H1/H2
       both supported (captions lift R@1 0.576→0.727; figure subset 0.556→0.778), see [Evaluation](#evaluation-rq1--rq2)
 - [x] **Phase 4b — eval hardening**: BM25 lexical baseline, nDCG@K, bootstrap CIs (added) — see [Evaluation](#evaluation-rq1--rq2)
-- [ ] **Faithfulness / citation precision-recall** over grounded answers
+- [x] **Faithfulness / citation precision-recall** over grounded answers — zero leakage after a prompt
+      fix the metric exposed, see [Faithfulness](#faithfulness--does-the-answer-stay-inside-the-evidence)
 - [ ] **Phase 3 — image embeddings** (CLIP/SigLIP) + **RRF / distribution-aware fusion** (RQ3 / H3),
       *not* a fixed-weight score blend
 - [ ] **Phase 4c — QA accuracy** (LLM-judge + human-κ validation) + Gradio UI + Colab notebook

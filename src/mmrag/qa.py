@@ -12,16 +12,25 @@ GROUNDED_SYSTEM = (
     "You are a precise academic assistant. Answer the user's question using ONLY the "
     "provided evidence passages. Do not use any outside knowledge. If the evidence is "
     "insufficient to answer, say so explicitly rather than guessing. "
-    "When you cite, cite ONLY page numbers that appear in the evidence headers "
-    "(e.g. [p7]); never cite a page that is not shown in the evidence."
+    "Each evidence header shows its page as 'p<number>' (e.g. 'p52'). When you cite, "
+    "cite ONLY that page number in the form [p52]; never cite a page that is not shown "
+    "in the evidence headers."
 )
 
 
 def format_evidence(chunks: list[dict]) -> str:
-    """Render retrieved chunks into a numbered, citable evidence block."""
+    """Render retrieved chunks into a citable evidence block.
+
+    The header carries exactly one number — the page (``p<N>``) — and is *not*
+    prefixed by an ordinal "Evidence i" index. An earlier numbered format
+    (``[Evidence 1 | … | p7]``) handed the model two integers per header and the
+    cheap QA model frequently cited the index as if it were the page, producing
+    spurious citation leakage (T5). Making the page the only citable integer
+    removes that confound.
+    """
     blocks: list[str] = []
-    for i, c in enumerate(chunks, 1):
-        header = f"[Evidence {i} | source={c.get('source')} | p{c.get('page')}]"
+    for c in chunks:
+        header = f"[source={c.get('source')} | p{c.get('page')}]"
         body = c.get("text", "")
         caption = c.get("figure_caption")
         if caption:
