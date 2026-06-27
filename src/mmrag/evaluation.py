@@ -103,6 +103,48 @@ def bootstrap_ci(
     }
 
 
+def score_query(qa: dict, hits: list[dict], ks: Sequence[int]) -> dict:
+    """Build the per-query metric row for one already-ranked, already-truncated
+    ``hits`` list (the top-k results, however they were produced).
+
+    Centralises the **source-aware** relevance logic (T3) so every retrieval path
+    — single-index dense/lexical (:func:`evaluate`) and the T7 fusion combiners
+    (:func:`score_candidates`) — scores identically. When the gold question names a
+    ``source`` the key is the ``(source, page)`` pair (page numbers collide across
+    decks); otherwise it falls back to the bare page for single-doc gold sets.
+    """
+    gold_pages = qa["evidence_pages"]
+    gold_source = qa.get("source")
+    ranked_pages = [h["page"] for h in hits]
+    if gold_source is not None:
+        ranked_keys = [(h.get("source"), h["page"]) for h in hits]
+        gold_keys = [(gold_source, p) for p in gold_pages]
+    else:
+        ranked_keys, gold_keys = ranked_pages, gold_pages
+    gold_key_set = set(gold_keys)
+
+    row = {
+        "id": qa.get("id"),
+        "type": qa.get("type"),
+        "source": gold_source,
+        "gold": gold_pages,
+        "ranked_pages": ranked_pages,
+        "ranked_ids": [h.get("id", "") for h in hits],
+        # Did the *relevant* figure/slide chunk (right source + gold page) actually
+        # surface? The mechanism check behind RQ2/RQ3 — figures only help if the
+        # visual chunk for the evidence page is retrieved.
+        "figure_hit": any(
+            h.get("image_path") and (h.get("source"), h["page"]) in gold_key_set
+            for h in hits
+        ),
+        "rr": reciprocal_rank(ranked_keys, gold_keys),
+    }
+    for k in ks:
+        row[f"recall@{k}"] = recall_at_k(ranked_keys, gold_keys, k)
+        row[f"ndcg@{k}"] = ndcg_at_k(ranked_keys, gold_keys, k)
+    return row
+
+
 def build_index(embedder, chunks: list[dict]):
     """Embed chunk texts and build an in-memory FAISS index over them.
 
@@ -140,13 +182,6 @@ def evaluate(
     per_query: list[dict] = []
     for qa in qa_pairs:
         question = qa["question"]
-        gold_pages = qa["evidence_pages"]
-        # Source-aware scoring (T3): on the multi-deck slide index a page number
-        # alone is ambiguous (every deck has a "page 7"), so when the question
-        # names a `source` we score on (source, page) keys. Falls back to plain
-        # pages for single-doc gold sets (e.g. attention_qa.json) that omit it.
-        gold_source = qa.get("source")
-
         fetch_k = max(candidate_k, top_k) if reranker is not None else top_k
         if lexical:
             hits = index.search(question, top_k=fetch_k)
@@ -157,34 +192,56 @@ def evaluate(
             hits = reranker.rerank(question, hits, top_k=top_k)
         else:
             hits = hits[:top_k]
+        per_query.append(score_query(qa, hits, ks))
 
-        ranked_pages = [h["page"] for h in hits]
-        if gold_source is not None:
-            ranked_keys = [(h.get("source"), h["page"]) for h in hits]
-            gold_keys = [(gold_source, p) for p in gold_pages]
-        else:
-            ranked_keys, gold_keys = ranked_pages, gold_pages
-        gold_key_set = set(gold_keys)
+    return {"per_query": per_query, "metrics": aggregate(per_query, ks)}
 
-        row = {
-            "id": qa.get("id"),
-            "type": qa.get("type"),
-            "source": gold_source,
-            "gold": gold_pages,
-            "ranked_pages": ranked_pages,
-            "ranked_ids": [h.get("id", "") for h in hits],
-            # Did the *relevant* figure/slide chunk (right source + gold page)
-            # actually surface? The mechanism check behind RQ2 — captions only
-            # help if the visual chunk for the evidence page is retrieved.
-            "figure_hit": any(
-                h.get("image_path") and (h.get("source"), h["page"]) in gold_key_set
-                for h in hits
-            ),
-            "rr": reciprocal_rank(ranked_keys, gold_keys),
-        }
-        for k in ks:
-            row[f"recall@{k}"] = recall_at_k(ranked_keys, gold_keys, k)
-            row[f"ndcg@{k}"] = ndcg_at_k(ranked_keys, gold_keys, k)
-        per_query.append(row)
 
+# ─────────────────────────── Cross-modal fusion eval (T7 / E3, H3) ──────────────────────────
+# The decisive H3 test (PROPOSAL §3.2/§5.3): fuse the *describe-then-embed* text
+# ranking (BGE-M3 over caption+OCR chunks) with the *embed-the-image* ranking
+# (CLIP over slide images). Because re-encoding the CLIP query and re-searching
+# both indexes is the expensive part, candidates are collected **once** and then
+# any number of fusion combiners / α values are applied as pure re-scoring over
+# the cached candidate lists (:mod:`mmrag.fusion`).
+
+def collect_fusion_candidates(
+    qa_pairs: list[dict],
+    text_index,
+    text_embedder,
+    image_index,
+    image_embedder,
+    candidate_k: int = 50,
+) -> list[dict]:
+    """Retrieve the deep text and image candidate lists for every gold question.
+
+    Returns one row per question: ``{"qa", "text_hits", "image_hits"}`` where each
+    hit list is the top ``candidate_k`` from that modality (dicts carrying ``id``,
+    ``score``, ``page``, ``source``, ``image_path``). Encoders are queried here and
+    only here; downstream fusion is score arithmetic over these lists.
+    """
+    rows: list[dict] = []
+    for qa in qa_pairs:
+        q = qa["question"]
+        text_hits = text_index.search(text_embedder.encode_queries([q]), top_k=candidate_k)
+        image_hits = image_index.search(image_embedder.encode_queries([q])[0], top_k=candidate_k)
+        rows.append({"qa": qa, "text_hits": text_hits, "image_hits": image_hits})
+    return rows
+
+
+def score_candidates(
+    candidates: list[dict],
+    rank_fn,
+    ks: Sequence[int] = (1, 3, 5),
+    top_k: int = 5,
+) -> dict:
+    """Score a set of collected candidates under one ranking strategy.
+
+    ``rank_fn`` maps a candidate row to a full ranked list of hit dicts (e.g. the
+    text-only list, the image-only list, or a fused list from
+    :func:`mmrag.fusion.fuse_hits`). It is truncated to ``top_k`` and scored with
+    the shared source-aware :func:`score_query`, so fusion conditions are directly
+    comparable to the single-index conditions from :func:`evaluate`.
+    """
+    per_query = [score_query(c["qa"], rank_fn(c)[:top_k], ks) for c in candidates]
     return {"per_query": per_query, "metrics": aggregate(per_query, ks)}

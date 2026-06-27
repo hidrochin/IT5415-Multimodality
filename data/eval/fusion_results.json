@@ -1,0 +1,5214 @@
+{
+  "gold": "slide_corpus_4decks",
+  "n_questions": 33,
+  "candidate_k": 50,
+  "top_k": 5,
+  "k0": 60,
+  "best_alpha": 0.8,
+  "metrics": {
+    "text-only": {
+      "recall@1": 0.7878787878787878,
+      "ndcg@1": 0.7878787878787878,
+      "recall@3": 0.9090909090909091,
+      "ndcg@3": 0.7584170399458988,
+      "recall@5": 0.9090909090909091,
+      "ndcg@5": 0.7799804683794713,
+      "mrr": 0.8383838383838385
+    },
+    "image-only": {
+      "recall@1": 0.42424242424242425,
+      "ndcg@1": 0.42424242424242425,
+      "recall@3": 0.5454545454545454,
+      "ndcg@3": 0.41326273324844376,
+      "recall@5": 0.5757575757575758,
+      "ndcg@5": 0.4311100106343555,
+      "mrr": 0.47575757575757577
+    },
+    "rrf": {
+      "recall@1": 0.5757575757575758,
+      "ndcg@1": 0.5757575757575758,
+      "recall@3": 0.7878787878787878,
+      "ndcg@3": 0.6426909224370495,
+      "recall@5": 0.8181818181818182,
+      "ndcg@5": 0.6791951350789989,
+      "mrr": 0.6893939393939394
+    },
+    "fixed 0.7/0.3": {
+      "recall@1": 0.7575757575757576,
+      "ndcg@1": 0.7575757575757576,
+      "recall@3": 0.8787878787878788,
+      "ndcg@3": 0.7564250410420417,
+      "recall@5": 0.9090909090909091,
+      "ndcg@5": 0.7907901846758545,
+      "mrr": 0.8207070707070707
+    },
+    "z-linear a=0.8": {
+      "recall@1": 0.8181818181818182,
+      "ndcg@1": 0.8181818181818182,
+      "recall@3": 0.9090909090909091,
+      "ndcg@3": 0.7788910957886648,
+      "recall@5": 0.9090909090909091,
+      "ndcg@5": 0.8092708433851425,
+      "mrr": 0.8484848484848485
+    }
+  },
+  "alpha_curve": [
+    {
+      "alpha": 0.0,
+      "recall@1": 0.42424242424242425,
+      "ndcg@1": 0.42424242424242425,
+      "recall@3": 0.5454545454545454,
+      "ndcg@3": 0.41326273324844376,
+      "recall@5": 0.5757575757575758,
+      "ndcg@5": 0.4311100106343555,
+      "mrr": 0.47575757575757577
+    },
+    {
+      "alpha": 0.1,
+      "recall@1": 0.45454545454545453,
+      "ndcg@1": 0.45454545454545453,
+      "recall@3": 0.5454545454545454,
+      "ndcg@3": 0.4249855455888844,
+      "recall@5": 0.6666666666666666,
+      "ndcg@5": 0.4950328638511574,
+      "mrr": 0.5222222222222223
+    },
+    {
+      "alpha": 0.2,
+      "recall@1": 0.45454545454545453,
+      "ndcg@1": 0.45454545454545453,
+      "recall@3": 0.6666666666666666,
+      "ndcg@3": 0.5067844200463723,
+      "recall@5": 0.7575757575757576,
+      "ndcg@5": 0.5478236355509046,
+      "mrr": 0.5702020202020202
+    },
+    {
+      "alpha": 0.3,
+      "recall@1": 0.5151515151515151,
+      "ndcg@1": 0.5151515151515151,
+      "recall@3": 0.7878787878787878,
+      "ndcg@3": 0.5859706986150225,
+      "recall@5": 0.8181818181818182,
+      "ndcg@5": 0.6241034209420199,
+      "mrr": 0.6388888888888888
+    },
+    {
+      "alpha": 0.4,
+      "recall@1": 0.6666666666666666,
+      "ndcg@1": 0.6666666666666666,
+      "recall@3": 0.8181818181818182,
+      "ndcg@3": 0.6674097880131268,
+      "recall@5": 0.8787878787878788,
+      "ndcg@5": 0.7310209213153844,
+      "mrr": 0.7474747474747474
+    },
+    {
+      "alpha": 0.5,
+      "recall@1": 0.696969696969697,
+      "ndcg@1": 0.696969696969697,
+      "recall@3": 0.9090909090909091,
+      "ndcg@3": 0.7452410941805707,
+      "recall@5": 0.9090909090909091,
+      "ndcg@5": 0.7747485535822409,
+      "mrr": 0.7929292929292928
+    },
+    {
+      "alpha": 0.6,
+      "recall@1": 0.7272727272727273,
+      "ndcg@1": 0.7272727272727273,
+      "recall@3": 0.9090909090909091,
+      "ndcg@3": 0.7560660680927638,
+      "recall@5": 0.9090909090909091,
+      "ndcg@5": 0.7861967260993795,
+      "mrr": 0.8131313131313131
+    },
+    {
+      "alpha": 0.7,
+      "recall@1": 0.7878787878787878,
+      "ndcg@1": 0.7878787878787878,
+      "recall@3": 0.9090909090909091,
+      "ndcg@3": 0.7701398522863395,
+      "recall@5": 0.9090909090909091,
+      "ndcg@5": 0.8013338547253417,
+      "mrr": 0.8383838383838385
+    },
+    {
+      "alpha": 0.8,
+      "recall@1": 0.8181818181818182,
+      "ndcg@1": 0.8181818181818182,
+      "recall@3": 0.9090909090909091,
+      "ndcg@3": 0.7788910957886648,
+      "recall@5": 0.9090909090909091,
+      "ndcg@5": 0.8092708433851425,
+      "mrr": 0.8484848484848485
+    },
+    {
+      "alpha": 0.9,
+      "recall@1": 0.7878787878787878,
+      "ndcg@1": 0.7878787878787878,
+      "recall@3": 0.9090909090909091,
+      "ndcg@3": 0.7677071489271938,
+      "recall@5": 0.9090909090909091,
+      "ndcg@5": 0.789270577360766,
+      "mrr": 0.8383838383838385
+    },
+    {
+      "alpha": 1.0,
+      "recall@1": 0.7878787878787878,
+      "ndcg@1": 0.7878787878787878,
+      "recall@3": 0.9090909090909091,
+      "ndcg@3": 0.7584170399458988,
+      "recall@5": 0.9090909090909091,
+      "ndcg@5": 0.7799804683794713,
+      "mrr": 0.8383838383838385
+    }
+  ],
+  "per_query": {
+    "text-only": [
+      {
+        "id": "fus01",
+        "type": "figure",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          7
+        ],
+        "ranked_pages": [
+          7,
+          44,
+          46,
+          41,
+          100
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p7::slide",
+          "multimodal  Learning.pdf::p44::c0",
+          "multimodal  Learning.pdf::p46::c0",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p41::slide",
+          "lecture3_1-MultimodalFusion.pdf::p100::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "fus02",
+        "type": "figure",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          42,
+          43
+        ],
+        "ranked_pages": [
+          42,
+          59,
+          60,
+          61,
+          12
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p42::slide",
+          "lecture3_1-MultimodalFusion.pdf::p59::slide",
+          "lecture3_1-MultimodalFusion.pdf::p60::slide",
+          "lecture3_1-MultimodalFusion.pdf::p61::slide",
+          "lecture3_2-MultimodalCoordinationFission.pdf::p12::c0"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6131471927654584,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6131471927654584
+      },
+      {
+        "id": "fus03",
+        "type": "figure",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          44
+        ],
+        "ranked_pages": [
+          44,
+          7,
+          44,
+          36,
+          51
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p44::slide",
+          "lecture3_2-MultimodalCoordinationFission.pdf::p7::c0",
+          "lecture3_1-MultimodalFusion.pdf::p44::c0",
+          "lecture3_1-MultimodalFusion.pdf::p36::slide",
+          "lecture3_1-MultimodalFusion.pdf::p51::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "fus04",
+        "type": "figure",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          45,
+          46
+        ],
+        "ranked_pages": [
+          45,
+          50,
+          51,
+          51,
+          48
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p45::slide",
+          "lecture3_1-MultimodalFusion.pdf::p50::slide",
+          "lecture3_1-MultimodalFusion.pdf::p51::slide",
+          "lecture3_1-MultimodalFusion.pdf::p51::c0",
+          "lecture3_1-MultimodalFusion.pdf::p48::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6131471927654584,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6131471927654584
+      },
+      {
+        "id": "fus05",
+        "type": "text",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          54
+        ],
+        "ranked_pages": [
+          54,
+          54,
+          55,
+          57,
+          70
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p54::slide",
+          "lecture3_1-MultimodalFusion.pdf::p54::c0",
+          "lecture3_1-MultimodalFusion.pdf::p55::slide",
+          "lecture3_1-MultimodalFusion.pdf::p57::slide",
+          "lecture3_1-MultimodalFusion.pdf::p70::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "fus06",
+        "type": "figure",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          35
+        ],
+        "ranked_pages": [
+          35,
+          75,
+          51,
+          35,
+          77
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p35::slide",
+          "lecture3_1-MultimodalFusion.pdf::p75::slide",
+          "multimodal  Learning.pdf::p51::c0",
+          "lecture3_1-MultimodalFusion.pdf::p35::c0",
+          "lecture3_1-MultimodalFusion.pdf::p77::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "fus07",
+        "type": "text",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          19,
+          23,
+          24
+        ],
+        "ranked_pages": [
+          19,
+          23,
+          21,
+          63,
+          25
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p19::slide",
+          "lecture3_1-MultimodalFusion.pdf::p23::slide",
+          "lecture3_1-MultimodalFusion.pdf::p21::slide",
+          "lecture3_1-MultimodalFusion.pdf::p63::c0",
+          "lecture3_1-MultimodalFusion.pdf::p25::c0"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.7653606369886217,
+        "recall@5": 1.0,
+        "ndcg@5": 0.7653606369886217
+      },
+      {
+        "id": "fus08",
+        "type": "text",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          31,
+          33
+        ],
+        "ranked_pages": [
+          33,
+          31,
+          33,
+          48,
+          33
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p33::c0",
+          "lecture3_1-MultimodalFusion.pdf::p31::c0",
+          "lecture3_1-MultimodalFusion.pdf::p33::slide",
+          "multimodal  Learning.pdf::p48::c0",
+          "lecture3_1-MultimodalFusion.pdf::p33::c1"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "ali01",
+        "type": "text",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          6,
+          7
+        ],
+        "ranked_pages": [
+          7,
+          28,
+          51,
+          7,
+          6
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p7::slide",
+          "lecture3_2-MultimodalCoordinationFission.pdf::p28::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p51::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p7::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p6::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6131471927654584,
+        "recall@5": 1.0,
+        "ndcg@5": 0.8503449055347546
+      },
+      {
+        "id": "ali02",
+        "type": "text",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          17
+        ],
+        "ranked_pages": [
+          80,
+          17,
+          17,
+          54,
+          53
+        ],
+        "ranked_ids": [
+          "Lecture7_1-MultimodalInteraction.pdf::p80::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p17::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p17::slide",
+          "Lecture9.1-Generation-Part1.pdf::p54::c0",
+          "Lecture9.1-Generation-Part1.pdf::p53::c0"
+        ],
+        "figure_hit": true,
+        "rr": 0.5,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6309297535714575,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6309297535714575
+      },
+      {
+        "id": "ali03",
+        "type": "figure",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          28,
+          29
+        ],
+        "ranked_pages": [
+          53,
+          53,
+          29,
+          29,
+          28
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p53::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p53::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p29::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p29::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p28::c0"
+        ],
+        "figure_hit": true,
+        "rr": 0.3333333333333333,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.3065735963827292,
+        "recall@5": 1.0,
+        "ndcg@5": 0.5437713091520254
+      },
+      {
+        "id": "ali04",
+        "type": "figure",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          34
+        ],
+        "ranked_pages": [
+          34,
+          7,
+          33,
+          6,
+          34
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p34::c0",
+          "lecture4.2-AlignedRepresentations.pdf::p7::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p33::c0",
+          "lecture4.2-AlignedRepresentations.pdf::p6::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p34::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "ali05",
+        "type": "figure",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          19,
+          52
+        ],
+        "ranked_pages": [
+          52,
+          52,
+          19,
+          18,
+          20
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p52::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p52::c0",
+          "Lecture7_2-MultimodalInference.pdf::p19::c0",
+          "Lecture7_2-MultimodalInference.pdf::p18::c0",
+          "Lecture7_2-MultimodalInference.pdf::p20::c0"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6131471927654584,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6131471927654584
+      },
+      {
+        "id": "ali06",
+        "type": "figure",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          44,
+          55
+        ],
+        "ranked_pages": [
+          55,
+          55,
+          44,
+          56,
+          21
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p55::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p55::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p44::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p56::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p21::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.9197207891481876,
+        "recall@5": 1.0,
+        "ndcg@5": 0.9197207891481876
+      },
+      {
+        "id": "ali07",
+        "type": "figure",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          15,
+          47
+        ],
+        "ranked_pages": [
+          59,
+          15,
+          47,
+          16,
+          3
+        ],
+        "ranked_ids": [
+          "multimodal  Learning.pdf::p59::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p15::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p47::c0",
+          "lecture4.2-AlignedRepresentations.pdf::p16::c0",
+          "lecture4.2-AlignedRepresentations.pdf::p3::c0"
+        ],
+        "figure_hit": false,
+        "rr": 0.5,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6934264036172708,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6934264036172708
+      },
+      {
+        "id": "ali08",
+        "type": "text",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          60
+        ],
+        "ranked_pages": [
+          60,
+          60,
+          64,
+          51,
+          45
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p60::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p60::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p64::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p51::c0",
+          "multimodal  Learning.pdf::p45::c0"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "trf01",
+        "type": "text",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          4,
+          8
+        ],
+        "ranked_pages": [
+          15,
+          10,
+          6,
+          36,
+          11
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p15::c0",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p10::c0",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p6::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p36::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p11::slide"
+        ],
+        "figure_hit": false,
+        "rr": 0.0,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      },
+      {
+        "id": "trf02",
+        "type": "figure",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          23
+        ],
+        "ranked_pages": [
+          23,
+          23,
+          20,
+          34,
+          53
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p23::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p23::c0",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p20::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p34::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p53::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "trf03",
+        "type": "text",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          24,
+          25
+        ],
+        "ranked_pages": [
+          24,
+          46,
+          24,
+          29,
+          46
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p24::slide",
+          "lecture4.2-AlignedRepresentations.pdf::p46::c0",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p24::c0",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p29::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p46::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6131471927654584,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6131471927654584
+      },
+      {
+        "id": "trf04",
+        "type": "text",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          26,
+          27
+        ],
+        "ranked_pages": [
+          27,
+          27,
+          26,
+          48,
+          26
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p27::c0",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p27::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p26::slide",
+          "lecture4.2-AlignedRepresentations.pdf::p48::c0",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p26::c0"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.9197207891481876,
+        "recall@5": 1.0,
+        "ndcg@5": 0.9197207891481876
+      },
+      {
+        "id": "trf05",
+        "type": "text",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          37
+        ],
+        "ranked_pages": [
+          37,
+          42,
+          53,
+          36,
+          103
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p37::c0",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p42::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p53::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p36::slide",
+          "multimodal  Learning.pdf::p103::c0"
+        ],
+        "figure_hit": false,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "trf06",
+        "type": "figure",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          40
+        ],
+        "ranked_pages": [
+          40,
+          40,
+          47,
+          38,
+          39
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p40::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p40::c0",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p47::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p38::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p39::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "trf07",
+        "type": "figure",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          49
+        ],
+        "ranked_pages": [
+          49,
+          49,
+          48,
+          47,
+          46
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p49::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p49::c0",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p48::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p47::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p46::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "trf08",
+        "type": "figure",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          46
+        ],
+        "ranked_pages": [
+          46,
+          46,
+          45,
+          48,
+          4
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p46::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p46::c0",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p45::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p48::slide",
+          "lecture3_1-MultimodalFusion.pdf::p4::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "trf09",
+        "type": "figure",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          61
+        ],
+        "ranked_pages": [
+          61,
+          61,
+          60,
+          16,
+          60
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p61::c0",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p61::slide",
+          "lecture4.2-AlignedRepresentations.pdf::p60::c0",
+          "Lecture5_2-StructuredRepresentationsAndReasoning.pdf::p16::c0",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p60::c0"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "gen01",
+        "type": "figure",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          3
+        ],
+        "ranked_pages": [
+          41,
+          4,
+          73,
+          1,
+          42
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p41::slide",
+          "lecture3_1-MultimodalFusion.pdf::p4::slide",
+          "lecture3_1-MultimodalFusion.pdf::p73::slide",
+          "Lecture9.1-Generation-Part1.pdf::p1::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p42::slide"
+        ],
+        "figure_hit": false,
+        "rr": 0.0,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      },
+      {
+        "id": "gen02",
+        "type": "text",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          3
+        ],
+        "ranked_pages": [
+          55,
+          75,
+          29,
+          85,
+          44
+        ],
+        "ranked_ids": [
+          "Lecture9.2-Generation-Part2.pdf::p55::c0",
+          "multimodal  Learning.pdf::p75::c0",
+          "Lecture9.1-Generation-Part1.pdf::p29::c0",
+          "multimodal  Learning.pdf::p85::c0",
+          "multimodal  Learning.pdf::p44::c0"
+        ],
+        "figure_hit": false,
+        "rr": 0.0,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      },
+      {
+        "id": "gen03",
+        "type": "figure",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          13,
+          14
+        ],
+        "ranked_pages": [
+          14,
+          13,
+          15,
+          17,
+          29
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p14::slide",
+          "Lecture9.1-Generation-Part1.pdf::p13::slide",
+          "Lecture9.1-Generation-Part1.pdf::p15::slide",
+          "Lecture9.1-Generation-Part1.pdf::p17::slide",
+          "Lecture9.2-Generation-Part2.pdf::p29::c0"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "gen04",
+        "type": "text",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          16,
+          17
+        ],
+        "ranked_pages": [
+          17,
+          81,
+          17,
+          80,
+          16
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p17::slide",
+          "multimodal  Learning.pdf::p81::c0",
+          "Lecture9.1-Generation-Part1.pdf::p17::c0",
+          "multimodal  Learning.pdf::p80::c0",
+          "Lecture9.1-Generation-Part1.pdf::p16::c0"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6131471927654584,
+        "recall@5": 1.0,
+        "ndcg@5": 0.8503449055347546
+      },
+      {
+        "id": "gen05",
+        "type": "text",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          39,
+          40
+        ],
+        "ranked_pages": [
+          39,
+          40,
+          41,
+          57,
+          49
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p39::slide",
+          "Lecture9.1-Generation-Part1.pdf::p40::slide",
+          "Lecture9.1-Generation-Part1.pdf::p41::slide",
+          "Lecture9.1-Generation-Part1.pdf::p57::slide",
+          "Lecture9.2-Generation-Part2.pdf::p49::c0"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "gen06",
+        "type": "text",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          22
+        ],
+        "ranked_pages": [
+          85,
+          27,
+          22,
+          82,
+          84
+        ],
+        "ranked_ids": [
+          "multimodal  Learning.pdf::p85::c0",
+          "Lecture9.1-Generation-Part1.pdf::p27::c0",
+          "Lecture9.1-Generation-Part1.pdf::p22::c0",
+          "multimodal  Learning.pdf::p82::c0",
+          "multimodal  Learning.pdf::p84::c0"
+        ],
+        "figure_hit": false,
+        "rr": 0.3333333333333333,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.5,
+        "recall@5": 1.0,
+        "ndcg@5": 0.5
+      },
+      {
+        "id": "gen07",
+        "type": "text",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          48
+        ],
+        "ranked_pages": [
+          48,
+          64,
+          53,
+          50,
+          52
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p48::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p64::c0",
+          "Lecture9.1-Generation-Part1.pdf::p53::c0",
+          "Lecture9.1-Generation-Part1.pdf::p50::slide",
+          "Lecture9.1-Generation-Part1.pdf::p52::slide"
+        ],
+        "figure_hit": false,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "gen08",
+        "type": "figure",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          43,
+          44
+        ],
+        "ranked_pages": [
+          44,
+          44,
+          46,
+          45,
+          90
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p44::c0",
+          "Lecture9.1-Generation-Part1.pdf::p44::slide",
+          "Lecture9.1-Generation-Part1.pdf::p46::c0",
+          "Lecture9.1-Generation-Part1.pdf::p45::c0",
+          "multimodal  Learning.pdf::p90::c0"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6131471927654584,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6131471927654584
+      }
+    ],
+    "image-only": [
+      {
+        "id": "fus01",
+        "type": "figure",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          7
+        ],
+        "ranked_pages": [
+          3,
+          6,
+          7,
+          100,
+          16
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p3::slide",
+          "lecture3_1-MultimodalFusion.pdf::p6::slide",
+          "lecture3_1-MultimodalFusion.pdf::p7::slide",
+          "lecture3_1-MultimodalFusion.pdf::p100::slide",
+          "lecture3_1-MultimodalFusion.pdf::p16::slide"
+        ],
+        "figure_hit": true,
+        "rr": 0.3333333333333333,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.5,
+        "recall@5": 1.0,
+        "ndcg@5": 0.5
+      },
+      {
+        "id": "fus02",
+        "type": "figure",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          42,
+          43
+        ],
+        "ranked_pages": [
+          43,
+          52,
+          60,
+          47,
+          48
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p43::slide",
+          "lecture3_1-MultimodalFusion.pdf::p52::slide",
+          "lecture3_1-MultimodalFusion.pdf::p60::slide",
+          "lecture3_1-MultimodalFusion.pdf::p47::slide",
+          "lecture3_1-MultimodalFusion.pdf::p48::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6131471927654584,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6131471927654584
+      },
+      {
+        "id": "fus03",
+        "type": "figure",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          44
+        ],
+        "ranked_pages": [
+          51,
+          84,
+          43,
+          47,
+          58
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p51::slide",
+          "lecture3_1-MultimodalFusion.pdf::p84::slide",
+          "lecture3_1-MultimodalFusion.pdf::p43::slide",
+          "lecture3_1-MultimodalFusion.pdf::p47::slide",
+          "lecture3_1-MultimodalFusion.pdf::p58::slide"
+        ],
+        "figure_hit": false,
+        "rr": 0.0,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      },
+      {
+        "id": "fus04",
+        "type": "figure",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          45,
+          46
+        ],
+        "ranked_pages": [
+          45,
+          48,
+          51,
+          47,
+          84
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p45::slide",
+          "lecture3_1-MultimodalFusion.pdf::p48::slide",
+          "lecture3_1-MultimodalFusion.pdf::p51::slide",
+          "lecture3_1-MultimodalFusion.pdf::p47::slide",
+          "lecture3_1-MultimodalFusion.pdf::p84::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6131471927654584,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6131471927654584
+      },
+      {
+        "id": "fus05",
+        "type": "text",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          54
+        ],
+        "ranked_pages": [
+          27,
+          51,
+          57,
+          48,
+          47
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p27::slide",
+          "lecture3_1-MultimodalFusion.pdf::p51::slide",
+          "lecture3_1-MultimodalFusion.pdf::p57::slide",
+          "lecture3_1-MultimodalFusion.pdf::p48::slide",
+          "lecture3_1-MultimodalFusion.pdf::p47::slide"
+        ],
+        "figure_hit": false,
+        "rr": 0.0,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      },
+      {
+        "id": "fus06",
+        "type": "figure",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          35
+        ],
+        "ranked_pages": [
+          68,
+          27,
+          75,
+          84,
+          35
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p68::slide",
+          "lecture3_1-MultimodalFusion.pdf::p27::slide",
+          "lecture3_1-MultimodalFusion.pdf::p75::slide",
+          "lecture3_1-MultimodalFusion.pdf::p84::slide",
+          "lecture3_1-MultimodalFusion.pdf::p35::slide"
+        ],
+        "figure_hit": true,
+        "rr": 0.2,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 1.0,
+        "ndcg@5": 0.38685280723454163
+      },
+      {
+        "id": "fus07",
+        "type": "text",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          19,
+          23,
+          24
+        ],
+        "ranked_pages": [
+          23,
+          19,
+          68,
+          24,
+          75
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p23::slide",
+          "lecture3_1-MultimodalFusion.pdf::p19::slide",
+          "lecture3_1-MultimodalFusion.pdf::p68::slide",
+          "lecture3_1-MultimodalFusion.pdf::p24::slide",
+          "lecture3_1-MultimodalFusion.pdf::p75::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.7653606369886217,
+        "recall@5": 1.0,
+        "ndcg@5": 0.9674679834891693
+      },
+      {
+        "id": "fus08",
+        "type": "text",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          31,
+          33
+        ],
+        "ranked_pages": [
+          50,
+          51,
+          48,
+          69,
+          27
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p50::slide",
+          "lecture3_1-MultimodalFusion.pdf::p51::slide",
+          "lecture3_1-MultimodalFusion.pdf::p48::slide",
+          "lecture3_1-MultimodalFusion.pdf::p69::slide",
+          "lecture3_1-MultimodalFusion.pdf::p27::slide"
+        ],
+        "figure_hit": false,
+        "rr": 0.0,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      },
+      {
+        "id": "ali01",
+        "type": "text",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          6,
+          7
+        ],
+        "ranked_pages": [
+          6,
+          7,
+          18,
+          7,
+          38
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p6::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p7::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p18::slide",
+          "lecture3_1-MultimodalFusion.pdf::p7::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p38::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "ali02",
+        "type": "text",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          17
+        ],
+        "ranked_pages": [
+          36,
+          34,
+          41,
+          46,
+          54
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p36::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p34::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p41::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p46::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p54::slide"
+        ],
+        "figure_hit": false,
+        "rr": 0.0,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      },
+      {
+        "id": "ali03",
+        "type": "figure",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          28,
+          29
+        ],
+        "ranked_pages": [
+          53,
+          29,
+          31,
+          27,
+          58
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p53::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p29::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p31::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p27::slide",
+          "Lecture9.1-Generation-Part1.pdf::p58::slide"
+        ],
+        "figure_hit": true,
+        "rr": 0.5,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.38685280723454163,
+        "recall@5": 1.0,
+        "ndcg@5": 0.38685280723454163
+      },
+      {
+        "id": "ali04",
+        "type": "figure",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          34
+        ],
+        "ranked_pages": [
+          34,
+          22,
+          33,
+          29,
+          57
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p34::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p22::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p33::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p29::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p57::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "ali05",
+        "type": "figure",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          19,
+          52
+        ],
+        "ranked_pages": [
+          52,
+          61,
+          59,
+          46,
+          11
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p52::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p61::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p59::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p46::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p11::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6131471927654584,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6131471927654584
+      },
+      {
+        "id": "ali06",
+        "type": "figure",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          44,
+          55
+        ],
+        "ranked_pages": [
+          55,
+          43,
+          38,
+          42,
+          27
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p55::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p43::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p38::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p42::slide",
+          "Lecture9.1-Generation-Part1.pdf::p27::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6131471927654584,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6131471927654584
+      },
+      {
+        "id": "ali07",
+        "type": "figure",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          15,
+          47
+        ],
+        "ranked_pages": [
+          14,
+          2,
+          90,
+          99,
+          43
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p14::slide",
+          "Lecture9.1-Generation-Part1.pdf::p2::slide",
+          "lecture3_1-MultimodalFusion.pdf::p90::slide",
+          "lecture3_1-MultimodalFusion.pdf::p99::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p43::slide"
+        ],
+        "figure_hit": false,
+        "rr": 0.0,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      },
+      {
+        "id": "ali08",
+        "type": "text",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          60
+        ],
+        "ranked_pages": [
+          60,
+          32,
+          7,
+          6,
+          62
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p60::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p32::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p7::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p6::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p62::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "trf01",
+        "type": "text",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          4,
+          8
+        ],
+        "ranked_pages": [
+          20,
+          24,
+          53,
+          36,
+          48
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p20::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p24::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p53::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p36::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p48::slide"
+        ],
+        "figure_hit": false,
+        "rr": 0.0,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      },
+      {
+        "id": "trf02",
+        "type": "figure",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          23
+        ],
+        "ranked_pages": [
+          34,
+          3,
+          41,
+          26,
+          24
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p34::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p3::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p41::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p26::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p24::slide"
+        ],
+        "figure_hit": false,
+        "rr": 0.0,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      },
+      {
+        "id": "trf03",
+        "type": "text",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          24,
+          25
+        ],
+        "ranked_pages": [
+          24,
+          34,
+          25,
+          30,
+          51
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p24::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p34::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p25::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p30::slide",
+          "Lecture9.1-Generation-Part1.pdf::p51::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.9197207891481876,
+        "recall@5": 1.0,
+        "ndcg@5": 0.9197207891481876
+      },
+      {
+        "id": "trf04",
+        "type": "text",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          26,
+          27
+        ],
+        "ranked_pages": [
+          27,
+          26,
+          17,
+          24,
+          23
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p27::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p26::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p17::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p24::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p23::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "trf05",
+        "type": "text",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          37
+        ],
+        "ranked_pages": [
+          44,
+          62,
+          48,
+          60,
+          45
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p44::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p62::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p48::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p60::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p45::slide"
+        ],
+        "figure_hit": false,
+        "rr": 0.0,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      },
+      {
+        "id": "trf06",
+        "type": "figure",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          40
+        ],
+        "ranked_pages": [
+          40,
+          39,
+          49,
+          61,
+          37
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p40::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p39::slide",
+          "Lecture9.1-Generation-Part1.pdf::p49::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p61::slide",
+          "Lecture9.1-Generation-Part1.pdf::p37::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "trf07",
+        "type": "figure",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          49
+        ],
+        "ranked_pages": [
+          16,
+          26,
+          62,
+          42,
+          34
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p16::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p26::slide",
+          "lecture3_1-MultimodalFusion.pdf::p62::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p42::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p34::slide"
+        ],
+        "figure_hit": false,
+        "rr": 0.0,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      },
+      {
+        "id": "trf08",
+        "type": "figure",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          46
+        ],
+        "ranked_pages": [
+          46,
+          54,
+          51,
+          36,
+          26
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p46::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p54::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p51::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p36::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p26::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "trf09",
+        "type": "figure",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          61
+        ],
+        "ranked_pages": [
+          15,
+          20,
+          48,
+          36,
+          62
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p15::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p20::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p48::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p36::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p62::slide"
+        ],
+        "figure_hit": false,
+        "rr": 0.0,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      },
+      {
+        "id": "gen01",
+        "type": "figure",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          3
+        ],
+        "ranked_pages": [
+          1,
+          38,
+          22,
+          42,
+          3
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p1::slide",
+          "Lecture9.1-Generation-Part1.pdf::p38::slide",
+          "Lecture9.1-Generation-Part1.pdf::p22::slide",
+          "Lecture9.1-Generation-Part1.pdf::p42::slide",
+          "lecture3_1-MultimodalFusion.pdf::p3::slide"
+        ],
+        "figure_hit": false,
+        "rr": 0.0,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      },
+      {
+        "id": "gen02",
+        "type": "text",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          3
+        ],
+        "ranked_pages": [
+          64,
+          36,
+          2,
+          90,
+          28
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p64::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p36::slide",
+          "Lecture9.1-Generation-Part1.pdf::p2::slide",
+          "lecture3_1-MultimodalFusion.pdf::p90::slide",
+          "Lecture9.1-Generation-Part1.pdf::p28::slide"
+        ],
+        "figure_hit": false,
+        "rr": 0.0,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      },
+      {
+        "id": "gen03",
+        "type": "figure",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          13,
+          14
+        ],
+        "ranked_pages": [
+          21,
+          20,
+          49,
+          25,
+          40
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p21::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p20::slide",
+          "Lecture9.1-Generation-Part1.pdf::p49::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p25::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p40::slide"
+        ],
+        "figure_hit": false,
+        "rr": 0.0,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      },
+      {
+        "id": "gen04",
+        "type": "text",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          16,
+          17
+        ],
+        "ranked_pages": [
+          26,
+          27,
+          17,
+          25,
+          23
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p26::slide",
+          "Lecture9.1-Generation-Part1.pdf::p27::slide",
+          "Lecture9.1-Generation-Part1.pdf::p17::slide",
+          "Lecture9.1-Generation-Part1.pdf::p25::slide",
+          "Lecture9.1-Generation-Part1.pdf::p23::slide"
+        ],
+        "figure_hit": true,
+        "rr": 0.3333333333333333,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.3065735963827292,
+        "recall@5": 1.0,
+        "ndcg@5": 0.3065735963827292
+      },
+      {
+        "id": "gen05",
+        "type": "text",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          39,
+          40
+        ],
+        "ranked_pages": [
+          42,
+          56,
+          39,
+          57,
+          36
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p42::slide",
+          "Lecture9.1-Generation-Part1.pdf::p56::slide",
+          "Lecture9.1-Generation-Part1.pdf::p39::slide",
+          "Lecture9.1-Generation-Part1.pdf::p57::slide",
+          "lecture3_1-MultimodalFusion.pdf::p36::slide"
+        ],
+        "figure_hit": true,
+        "rr": 0.3333333333333333,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.3065735963827292,
+        "recall@5": 1.0,
+        "ndcg@5": 0.3065735963827292
+      },
+      {
+        "id": "gen06",
+        "type": "text",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          22
+        ],
+        "ranked_pages": [
+          22,
+          2,
+          64,
+          26,
+          25
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p22::slide",
+          "Lecture9.1-Generation-Part1.pdf::p2::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p64::slide",
+          "Lecture9.1-Generation-Part1.pdf::p26::slide",
+          "Lecture9.1-Generation-Part1.pdf::p25::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "gen07",
+        "type": "text",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          48
+        ],
+        "ranked_pages": [
+          48,
+          96,
+          90,
+          43,
+          22
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p48::slide",
+          "lecture3_1-MultimodalFusion.pdf::p96::slide",
+          "lecture3_1-MultimodalFusion.pdf::p90::slide",
+          "Lecture9.1-Generation-Part1.pdf::p43::slide",
+          "Lecture9.1-Generation-Part1.pdf::p22::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "gen08",
+        "type": "figure",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          43,
+          44
+        ],
+        "ranked_pages": [
+          50,
+          25,
+          46,
+          41,
+          51
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p50::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p25::slide",
+          "Lecture9.1-Generation-Part1.pdf::p46::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p41::slide",
+          "Lecture9.1-Generation-Part1.pdf::p51::slide"
+        ],
+        "figure_hit": false,
+        "rr": 0.0,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      }
+    ],
+    "rrf": [
+      {
+        "id": "fus01",
+        "type": "figure",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          7
+        ],
+        "ranked_pages": [
+          7,
+          100,
+          41,
+          6,
+          2
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p7::slide",
+          "lecture3_1-MultimodalFusion.pdf::p100::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p41::slide",
+          "lecture3_1-MultimodalFusion.pdf::p6::slide",
+          "lecture3_1-MultimodalFusion.pdf::p2::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "fus02",
+        "type": "figure",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          42,
+          43
+        ],
+        "ranked_pages": [
+          60,
+          52,
+          59,
+          43,
+          42
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p60::slide",
+          "lecture3_1-MultimodalFusion.pdf::p52::slide",
+          "lecture3_1-MultimodalFusion.pdf::p59::slide",
+          "lecture3_1-MultimodalFusion.pdf::p43::slide",
+          "lecture3_1-MultimodalFusion.pdf::p42::slide"
+        ],
+        "figure_hit": true,
+        "rr": 0.25,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 1.0,
+        "ndcg@5": 0.5012658353418871
+      },
+      {
+        "id": "fus03",
+        "type": "figure",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          44
+        ],
+        "ranked_pages": [
+          51,
+          44,
+          47,
+          36,
+          48
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p51::slide",
+          "lecture3_1-MultimodalFusion.pdf::p44::slide",
+          "lecture3_1-MultimodalFusion.pdf::p47::slide",
+          "lecture3_1-MultimodalFusion.pdf::p36::slide",
+          "lecture3_1-MultimodalFusion.pdf::p48::slide"
+        ],
+        "figure_hit": true,
+        "rr": 0.5,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6309297535714575,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6309297535714575
+      },
+      {
+        "id": "fus04",
+        "type": "figure",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          45,
+          46
+        ],
+        "ranked_pages": [
+          45,
+          51,
+          48,
+          47,
+          50
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p45::slide",
+          "lecture3_1-MultimodalFusion.pdf::p51::slide",
+          "lecture3_1-MultimodalFusion.pdf::p48::slide",
+          "lecture3_1-MultimodalFusion.pdf::p47::slide",
+          "lecture3_1-MultimodalFusion.pdf::p50::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6131471927654584,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6131471927654584
+      },
+      {
+        "id": "fus05",
+        "type": "text",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          54
+        ],
+        "ranked_pages": [
+          57,
+          54,
+          75,
+          74,
+          70
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p57::slide",
+          "lecture3_1-MultimodalFusion.pdf::p54::slide",
+          "lecture3_1-MultimodalFusion.pdf::p75::slide",
+          "lecture3_1-MultimodalFusion.pdf::p74::slide",
+          "lecture3_1-MultimodalFusion.pdf::p70::slide"
+        ],
+        "figure_hit": true,
+        "rr": 0.5,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6309297535714575,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6309297535714575
+      },
+      {
+        "id": "fus06",
+        "type": "figure",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          35
+        ],
+        "ranked_pages": [
+          75,
+          35,
+          68,
+          74,
+          89
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p75::slide",
+          "lecture3_1-MultimodalFusion.pdf::p35::slide",
+          "lecture3_1-MultimodalFusion.pdf::p68::slide",
+          "lecture3_1-MultimodalFusion.pdf::p74::slide",
+          "lecture3_1-MultimodalFusion.pdf::p89::slide"
+        ],
+        "figure_hit": true,
+        "rr": 0.5,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6309297535714575,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6309297535714575
+      },
+      {
+        "id": "fus07",
+        "type": "text",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          19,
+          23,
+          24
+        ],
+        "ranked_pages": [
+          19,
+          23,
+          68,
+          24,
+          63
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p19::slide",
+          "lecture3_1-MultimodalFusion.pdf::p23::slide",
+          "lecture3_1-MultimodalFusion.pdf::p68::slide",
+          "lecture3_1-MultimodalFusion.pdf::p24::slide",
+          "lecture3_1-MultimodalFusion.pdf::p63::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.7653606369886217,
+        "recall@5": 1.0,
+        "ndcg@5": 0.9674679834891693
+      },
+      {
+        "id": "fus08",
+        "type": "text",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          31,
+          33
+        ],
+        "ranked_pages": [
+          69,
+          68,
+          27,
+          50,
+          73
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p69::slide",
+          "lecture3_1-MultimodalFusion.pdf::p68::slide",
+          "lecture3_1-MultimodalFusion.pdf::p27::slide",
+          "lecture3_1-MultimodalFusion.pdf::p50::slide",
+          "lecture3_1-MultimodalFusion.pdf::p73::slide"
+        ],
+        "figure_hit": false,
+        "rr": 0.0,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      },
+      {
+        "id": "ali01",
+        "type": "text",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          6,
+          7
+        ],
+        "ranked_pages": [
+          7,
+          6,
+          18,
+          36,
+          36
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p7::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p6::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p18::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p36::slide",
+          "lecture3_1-MultimodalFusion.pdf::p36::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "ali02",
+        "type": "text",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          17
+        ],
+        "ranked_pages": [
+          17,
+          61,
+          41,
+          36,
+          64
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p17::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p61::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p41::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p36::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p64::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "ali03",
+        "type": "figure",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          28,
+          29
+        ],
+        "ranked_pages": [
+          53,
+          29,
+          27,
+          28,
+          38
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p53::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p29::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p27::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p28::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p38::slide"
+        ],
+        "figure_hit": true,
+        "rr": 0.5,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.38685280723454163,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6509209298071326
+      },
+      {
+        "id": "ali04",
+        "type": "figure",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          34
+        ],
+        "ranked_pages": [
+          34,
+          33,
+          70,
+          35,
+          32
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p34::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p33::slide",
+          "lecture3_1-MultimodalFusion.pdf::p70::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p35::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p32::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "ali05",
+        "type": "figure",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          19,
+          52
+        ],
+        "ranked_pages": [
+          52,
+          19,
+          46,
+          55,
+          61
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p52::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p19::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p46::slide",
+          "lecture3_1-MultimodalFusion.pdf::p55::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p61::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "ali06",
+        "type": "figure",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          44,
+          55
+        ],
+        "ranked_pages": [
+          55,
+          44,
+          43,
+          56,
+          42
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p55::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p44::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p43::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p56::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p42::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "ali07",
+        "type": "figure",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          15,
+          47
+        ],
+        "ranked_pages": [
+          14,
+          47,
+          15,
+          57,
+          100
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p14::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p47::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p15::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p57::slide",
+          "lecture3_1-MultimodalFusion.pdf::p100::slide"
+        ],
+        "figure_hit": true,
+        "rr": 0.5,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6934264036172708,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6934264036172708
+      },
+      {
+        "id": "ali08",
+        "type": "text",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          60
+        ],
+        "ranked_pages": [
+          60,
+          17,
+          7,
+          6,
+          32
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p60::slide",
+          "Lecture9.1-Generation-Part1.pdf::p17::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p7::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p6::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p32::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "trf01",
+        "type": "text",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          4,
+          8
+        ],
+        "ranked_pages": [
+          36,
+          53,
+          63,
+          15,
+          6
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p36::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p53::slide",
+          "lecture3_1-MultimodalFusion.pdf::p63::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p15::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p6::slide"
+        ],
+        "figure_hit": false,
+        "rr": 0.0,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      },
+      {
+        "id": "trf02",
+        "type": "figure",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          23
+        ],
+        "ranked_pages": [
+          34,
+          46,
+          26,
+          9,
+          17
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p34::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p46::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p26::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p9::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p17::slide"
+        ],
+        "figure_hit": false,
+        "rr": 0.0,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      },
+      {
+        "id": "trf03",
+        "type": "text",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          24,
+          25
+        ],
+        "ranked_pages": [
+          24,
+          46,
+          26,
+          29,
+          25
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p24::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p46::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p26::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p29::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p25::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6131471927654584,
+        "recall@5": 1.0,
+        "ndcg@5": 0.8503449055347546
+      },
+      {
+        "id": "trf04",
+        "type": "text",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          26,
+          27
+        ],
+        "ranked_pages": [
+          27,
+          26,
+          24,
+          22,
+          57
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p27::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p26::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p24::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p22::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p57::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "trf05",
+        "type": "text",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          37
+        ],
+        "ranked_pages": [
+          53,
+          42,
+          36,
+          45,
+          14
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p53::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p42::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p36::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p45::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p14::slide"
+        ],
+        "figure_hit": false,
+        "rr": 0.0,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      },
+      {
+        "id": "trf06",
+        "type": "figure",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          40
+        ],
+        "ranked_pages": [
+          40,
+          39,
+          61,
+          47,
+          38
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p40::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p39::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p61::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p47::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p38::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "trf07",
+        "type": "figure",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          49
+        ],
+        "ranked_pages": [
+          49,
+          42,
+          47,
+          26,
+          46
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p49::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p42::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p47::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p26::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p46::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "trf08",
+        "type": "figure",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          46
+        ],
+        "ranked_pages": [
+          46,
+          36,
+          48,
+          41,
+          42
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p46::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p36::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p48::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p41::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p42::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "trf09",
+        "type": "figure",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          61
+        ],
+        "ranked_pages": [
+          62,
+          61,
+          60,
+          36,
+          6
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p62::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p61::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p60::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p36::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p6::slide"
+        ],
+        "figure_hit": true,
+        "rr": 0.5,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6309297535714575,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6309297535714575
+      },
+      {
+        "id": "gen01",
+        "type": "figure",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          3
+        ],
+        "ranked_pages": [
+          1,
+          36,
+          2,
+          23,
+          4
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p1::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p36::slide",
+          "lecture3_1-MultimodalFusion.pdf::p2::slide",
+          "Lecture9.1-Generation-Part1.pdf::p23::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p4::slide"
+        ],
+        "figure_hit": false,
+        "rr": 0.0,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      },
+      {
+        "id": "gen02",
+        "type": "text",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          3
+        ],
+        "ranked_pages": [
+          22,
+          27,
+          26,
+          25,
+          55
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p22::slide",
+          "Lecture9.1-Generation-Part1.pdf::p27::slide",
+          "Lecture9.1-Generation-Part1.pdf::p26::slide",
+          "Lecture9.1-Generation-Part1.pdf::p25::slide",
+          "Lecture9.2-Generation-Part2.pdf::p55::c0"
+        ],
+        "figure_hit": false,
+        "rr": 0.0,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      },
+      {
+        "id": "gen03",
+        "type": "figure",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          13,
+          14
+        ],
+        "ranked_pages": [
+          14,
+          13,
+          15,
+          40,
+          21
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p14::slide",
+          "Lecture9.1-Generation-Part1.pdf::p13::slide",
+          "Lecture9.1-Generation-Part1.pdf::p15::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p40::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p21::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "gen04",
+        "type": "text",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          16,
+          17
+        ],
+        "ranked_pages": [
+          17,
+          14,
+          15,
+          20,
+          13
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p17::slide",
+          "Lecture9.1-Generation-Part1.pdf::p14::slide",
+          "Lecture9.1-Generation-Part1.pdf::p15::slide",
+          "lecture3_1-MultimodalFusion.pdf::p20::slide",
+          "Lecture9.1-Generation-Part1.pdf::p13::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6131471927654584,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6131471927654584
+      },
+      {
+        "id": "gen05",
+        "type": "text",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          39,
+          40
+        ],
+        "ranked_pages": [
+          39,
+          57,
+          59,
+          42,
+          44
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p39::slide",
+          "Lecture9.1-Generation-Part1.pdf::p57::slide",
+          "Lecture9.1-Generation-Part1.pdf::p59::slide",
+          "Lecture9.1-Generation-Part1.pdf::p42::slide",
+          "Lecture9.1-Generation-Part1.pdf::p44::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6131471927654584,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6131471927654584
+      },
+      {
+        "id": "gen06",
+        "type": "text",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          22
+        ],
+        "ranked_pages": [
+          22,
+          26,
+          25,
+          27,
+          23
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p22::slide",
+          "Lecture9.1-Generation-Part1.pdf::p26::slide",
+          "Lecture9.1-Generation-Part1.pdf::p25::slide",
+          "Lecture9.1-Generation-Part1.pdf::p27::slide",
+          "Lecture9.1-Generation-Part1.pdf::p23::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "gen07",
+        "type": "text",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          48
+        ],
+        "ranked_pages": [
+          48,
+          50,
+          64,
+          98,
+          43
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p48::slide",
+          "Lecture9.1-Generation-Part1.pdf::p50::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p64::slide",
+          "lecture3_1-MultimodalFusion.pdf::p98::slide",
+          "Lecture9.1-Generation-Part1.pdf::p43::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "gen08",
+        "type": "figure",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          43,
+          44
+        ],
+        "ranked_pages": [
+          46,
+          44,
+          49,
+          50,
+          53
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p46::slide",
+          "Lecture9.1-Generation-Part1.pdf::p44::slide",
+          "Lecture9.1-Generation-Part1.pdf::p49::slide",
+          "Lecture9.1-Generation-Part1.pdf::p50::slide",
+          "Lecture9.1-Generation-Part1.pdf::p53::slide"
+        ],
+        "figure_hit": true,
+        "rr": 0.5,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.38685280723454163,
+        "recall@5": 1.0,
+        "ndcg@5": 0.38685280723454163
+      }
+    ],
+    "fixed 0.7/0.3": [
+      {
+        "id": "fus01",
+        "type": "figure",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          7
+        ],
+        "ranked_pages": [
+          7,
+          100,
+          41,
+          6,
+          42
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p7::slide",
+          "lecture3_1-MultimodalFusion.pdf::p100::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p41::slide",
+          "lecture3_1-MultimodalFusion.pdf::p6::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p42::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "fus02",
+        "type": "figure",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          42,
+          43
+        ],
+        "ranked_pages": [
+          42,
+          60,
+          59,
+          54,
+          43
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p42::slide",
+          "lecture3_1-MultimodalFusion.pdf::p60::slide",
+          "lecture3_1-MultimodalFusion.pdf::p59::slide",
+          "lecture3_1-MultimodalFusion.pdf::p54::slide",
+          "lecture3_1-MultimodalFusion.pdf::p43::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6131471927654584,
+        "recall@5": 1.0,
+        "ndcg@5": 0.8503449055347546
+      },
+      {
+        "id": "fus03",
+        "type": "figure",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          44
+        ],
+        "ranked_pages": [
+          44,
+          51,
+          36,
+          47,
+          50
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p44::slide",
+          "lecture3_1-MultimodalFusion.pdf::p51::slide",
+          "lecture3_1-MultimodalFusion.pdf::p36::slide",
+          "lecture3_1-MultimodalFusion.pdf::p47::slide",
+          "lecture3_1-MultimodalFusion.pdf::p50::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "fus04",
+        "type": "figure",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          45,
+          46
+        ],
+        "ranked_pages": [
+          45,
+          50,
+          51,
+          48,
+          47
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p45::slide",
+          "lecture3_1-MultimodalFusion.pdf::p50::slide",
+          "lecture3_1-MultimodalFusion.pdf::p51::slide",
+          "lecture3_1-MultimodalFusion.pdf::p48::slide",
+          "lecture3_1-MultimodalFusion.pdf::p47::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6131471927654584,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6131471927654584
+      },
+      {
+        "id": "fus05",
+        "type": "text",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          54
+        ],
+        "ranked_pages": [
+          54,
+          57,
+          70,
+          63,
+          74
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p54::slide",
+          "lecture3_1-MultimodalFusion.pdf::p57::slide",
+          "lecture3_1-MultimodalFusion.pdf::p70::slide",
+          "lecture3_1-MultimodalFusion.pdf::p63::slide",
+          "lecture3_1-MultimodalFusion.pdf::p74::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "fus06",
+        "type": "figure",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          35
+        ],
+        "ranked_pages": [
+          75,
+          35,
+          68,
+          77,
+          74
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p75::slide",
+          "lecture3_1-MultimodalFusion.pdf::p35::slide",
+          "lecture3_1-MultimodalFusion.pdf::p68::slide",
+          "lecture3_1-MultimodalFusion.pdf::p77::slide",
+          "lecture3_1-MultimodalFusion.pdf::p74::slide"
+        ],
+        "figure_hit": true,
+        "rr": 0.5,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6309297535714575,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6309297535714575
+      },
+      {
+        "id": "fus07",
+        "type": "text",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          19,
+          23,
+          24
+        ],
+        "ranked_pages": [
+          19,
+          23,
+          63,
+          24,
+          99
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p19::slide",
+          "lecture3_1-MultimodalFusion.pdf::p23::slide",
+          "lecture3_1-MultimodalFusion.pdf::p63::slide",
+          "lecture3_1-MultimodalFusion.pdf::p24::slide",
+          "lecture3_1-MultimodalFusion.pdf::p99::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.7653606369886217,
+        "recall@5": 1.0,
+        "ndcg@5": 0.9674679834891693
+      },
+      {
+        "id": "fus08",
+        "type": "text",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          31,
+          33
+        ],
+        "ranked_pages": [
+          33,
+          31,
+          69,
+          73,
+          77
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p33::c0",
+          "lecture3_1-MultimodalFusion.pdf::p31::c0",
+          "lecture3_1-MultimodalFusion.pdf::p69::slide",
+          "lecture3_1-MultimodalFusion.pdf::p73::slide",
+          "lecture3_1-MultimodalFusion.pdf::p77::slide"
+        ],
+        "figure_hit": false,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "ali01",
+        "type": "text",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          6,
+          7
+        ],
+        "ranked_pages": [
+          7,
+          6,
+          28,
+          51,
+          7
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p7::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p6::slide",
+          "lecture3_2-MultimodalCoordinationFission.pdf::p28::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p51::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p7::c0"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "ali02",
+        "type": "text",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          17
+        ],
+        "ranked_pages": [
+          17,
+          27,
+          61,
+          64,
+          35
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p17::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p27::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p61::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p64::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p35::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "ali03",
+        "type": "figure",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          28,
+          29
+        ],
+        "ranked_pages": [
+          53,
+          29,
+          53,
+          28,
+          27
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p53::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p29::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p53::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p28::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p27::slide"
+        ],
+        "figure_hit": true,
+        "rr": 0.5,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.38685280723454163,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6509209298071326
+      },
+      {
+        "id": "ali04",
+        "type": "figure",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          34
+        ],
+        "ranked_pages": [
+          34,
+          7,
+          34,
+          33,
+          35
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p34::c0",
+          "lecture4.2-AlignedRepresentations.pdf::p7::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p34::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p33::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p35::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "ali05",
+        "type": "figure",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          19,
+          52
+        ],
+        "ranked_pages": [
+          52,
+          19,
+          52,
+          55,
+          46
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p52::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p19::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p52::c0",
+          "lecture3_1-MultimodalFusion.pdf::p55::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p46::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "ali06",
+        "type": "figure",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          44,
+          55
+        ],
+        "ranked_pages": [
+          55,
+          55,
+          44,
+          43,
+          56
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p55::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p55::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p44::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p43::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p56::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.9197207891481876,
+        "recall@5": 1.0,
+        "ndcg@5": 0.9197207891481876
+      },
+      {
+        "id": "ali07",
+        "type": "figure",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          15,
+          47
+        ],
+        "ranked_pages": [
+          14,
+          47,
+          15,
+          59,
+          15
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p14::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p47::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p15::slide",
+          "multimodal  Learning.pdf::p59::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p15::c0"
+        ],
+        "figure_hit": true,
+        "rr": 0.5,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6934264036172708,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6934264036172708
+      },
+      {
+        "id": "ali08",
+        "type": "text",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          60
+        ],
+        "ranked_pages": [
+          60,
+          60,
+          17,
+          7,
+          52
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p60::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p60::c0",
+          "Lecture9.1-Generation-Part1.pdf::p17::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p7::slide",
+          "Lecture9.1-Generation-Part1.pdf::p52::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "trf01",
+        "type": "text",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          4,
+          8
+        ],
+        "ranked_pages": [
+          36,
+          6,
+          11,
+          63,
+          60
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p36::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p6::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p11::slide",
+          "lecture3_1-MultimodalFusion.pdf::p63::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p60::slide"
+        ],
+        "figure_hit": false,
+        "rr": 0.0,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      },
+      {
+        "id": "trf02",
+        "type": "figure",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          23
+        ],
+        "ranked_pages": [
+          23,
+          34,
+          20,
+          53,
+          23
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p23::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p34::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p20::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p53::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p23::c0"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "trf03",
+        "type": "text",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          24,
+          25
+        ],
+        "ranked_pages": [
+          24,
+          46,
+          29,
+          39,
+          26
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p24::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p46::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p29::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p39::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p26::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6131471927654584,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6131471927654584
+      },
+      {
+        "id": "trf04",
+        "type": "text",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          26,
+          27
+        ],
+        "ranked_pages": [
+          27,
+          26,
+          24,
+          22,
+          27
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p27::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p26::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p24::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p22::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p27::c0"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "trf05",
+        "type": "text",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          37
+        ],
+        "ranked_pages": [
+          42,
+          53,
+          36,
+          37,
+          12
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p42::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p53::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p36::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p37::c0",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p12::slide"
+        ],
+        "figure_hit": false,
+        "rr": 0.25,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 1.0,
+        "ndcg@5": 0.43067655807339306
+      },
+      {
+        "id": "trf06",
+        "type": "figure",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          40
+        ],
+        "ranked_pages": [
+          40,
+          47,
+          38,
+          39,
+          40
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p40::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p47::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p38::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p39::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p40::c0"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "trf07",
+        "type": "figure",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          49
+        ],
+        "ranked_pages": [
+          49,
+          48,
+          47,
+          49,
+          46
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p49::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p48::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p47::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p49::c0",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p46::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "trf08",
+        "type": "figure",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          46
+        ],
+        "ranked_pages": [
+          46,
+          48,
+          42,
+          36,
+          41
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p46::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p48::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p42::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p36::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p41::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "trf09",
+        "type": "figure",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          61
+        ],
+        "ranked_pages": [
+          61,
+          60,
+          62,
+          61,
+          6
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p61::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p60::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p62::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p61::c0",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p6::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "gen01",
+        "type": "figure",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          3
+        ],
+        "ranked_pages": [
+          1,
+          2,
+          62,
+          5,
+          36
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p1::slide",
+          "lecture3_1-MultimodalFusion.pdf::p2::slide",
+          "lecture3_1-MultimodalFusion.pdf::p62::slide",
+          "lecture3_1-MultimodalFusion.pdf::p5::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p36::slide"
+        ],
+        "figure_hit": false,
+        "rr": 0.0,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      },
+      {
+        "id": "gen02",
+        "type": "text",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          3
+        ],
+        "ranked_pages": [
+          27,
+          25,
+          22,
+          26,
+          55
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p27::slide",
+          "Lecture9.1-Generation-Part1.pdf::p25::slide",
+          "Lecture9.1-Generation-Part1.pdf::p22::slide",
+          "Lecture9.1-Generation-Part1.pdf::p26::slide",
+          "Lecture9.2-Generation-Part2.pdf::p55::c0"
+        ],
+        "figure_hit": false,
+        "rr": 0.0,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      },
+      {
+        "id": "gen03",
+        "type": "figure",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          13,
+          14
+        ],
+        "ranked_pages": [
+          14,
+          13,
+          15,
+          12,
+          40
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p14::slide",
+          "Lecture9.1-Generation-Part1.pdf::p13::slide",
+          "Lecture9.1-Generation-Part1.pdf::p15::slide",
+          "Lecture9.1-Generation-Part1.pdf::p12::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p40::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "gen04",
+        "type": "text",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          16,
+          17
+        ],
+        "ranked_pages": [
+          17,
+          14,
+          13,
+          81,
+          17
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p17::slide",
+          "Lecture9.1-Generation-Part1.pdf::p14::slide",
+          "Lecture9.1-Generation-Part1.pdf::p13::slide",
+          "multimodal  Learning.pdf::p81::c0",
+          "Lecture9.1-Generation-Part1.pdf::p17::c0"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6131471927654584,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6131471927654584
+      },
+      {
+        "id": "gen05",
+        "type": "text",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          39,
+          40
+        ],
+        "ranked_pages": [
+          39,
+          40,
+          57,
+          44,
+          59
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p39::slide",
+          "Lecture9.1-Generation-Part1.pdf::p40::slide",
+          "Lecture9.1-Generation-Part1.pdf::p57::slide",
+          "Lecture9.1-Generation-Part1.pdf::p44::slide",
+          "Lecture9.1-Generation-Part1.pdf::p59::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "gen06",
+        "type": "text",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          22
+        ],
+        "ranked_pages": [
+          25,
+          26,
+          22,
+          27,
+          85
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p25::slide",
+          "Lecture9.1-Generation-Part1.pdf::p26::slide",
+          "Lecture9.1-Generation-Part1.pdf::p22::slide",
+          "Lecture9.1-Generation-Part1.pdf::p27::slide",
+          "multimodal  Learning.pdf::p85::c0"
+        ],
+        "figure_hit": true,
+        "rr": 0.3333333333333333,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.5,
+        "recall@5": 1.0,
+        "ndcg@5": 0.5
+      },
+      {
+        "id": "gen07",
+        "type": "text",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          48
+        ],
+        "ranked_pages": [
+          48,
+          50,
+          48,
+          53,
+          49
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p48::c0",
+          "Lecture9.1-Generation-Part1.pdf::p50::slide",
+          "Lecture9.1-Generation-Part1.pdf::p48::slide",
+          "Lecture9.1-Generation-Part1.pdf::p53::slide",
+          "Lecture9.1-Generation-Part1.pdf::p49::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "gen08",
+        "type": "figure",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          43,
+          44
+        ],
+        "ranked_pages": [
+          44,
+          46,
+          44,
+          49,
+          50
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p44::slide",
+          "Lecture9.1-Generation-Part1.pdf::p46::slide",
+          "Lecture9.1-Generation-Part1.pdf::p44::c0",
+          "Lecture9.1-Generation-Part1.pdf::p49::slide",
+          "Lecture9.1-Generation-Part1.pdf::p50::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6131471927654584,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6131471927654584
+      }
+    ],
+    "z-linear a=0.8": [
+      {
+        "id": "fus01",
+        "type": "figure",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          7
+        ],
+        "ranked_pages": [
+          7,
+          44,
+          100,
+          41,
+          46
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p7::slide",
+          "multimodal  Learning.pdf::p44::c0",
+          "lecture3_1-MultimodalFusion.pdf::p100::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p41::slide",
+          "multimodal  Learning.pdf::p46::c0"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "fus02",
+        "type": "figure",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          42,
+          43
+        ],
+        "ranked_pages": [
+          42,
+          60,
+          59,
+          54,
+          43
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p42::slide",
+          "lecture3_1-MultimodalFusion.pdf::p60::slide",
+          "lecture3_1-MultimodalFusion.pdf::p59::slide",
+          "lecture3_1-MultimodalFusion.pdf::p54::slide",
+          "lecture3_1-MultimodalFusion.pdf::p43::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6131471927654584,
+        "recall@5": 1.0,
+        "ndcg@5": 0.8503449055347546
+      },
+      {
+        "id": "fus03",
+        "type": "figure",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          44
+        ],
+        "ranked_pages": [
+          44,
+          7,
+          44,
+          51,
+          36
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p44::slide",
+          "lecture3_2-MultimodalCoordinationFission.pdf::p7::c0",
+          "lecture3_1-MultimodalFusion.pdf::p44::c0",
+          "lecture3_1-MultimodalFusion.pdf::p51::slide",
+          "lecture3_1-MultimodalFusion.pdf::p36::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "fus04",
+        "type": "figure",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          45,
+          46
+        ],
+        "ranked_pages": [
+          45,
+          50,
+          51,
+          48,
+          47
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p45::slide",
+          "lecture3_1-MultimodalFusion.pdf::p50::slide",
+          "lecture3_1-MultimodalFusion.pdf::p51::slide",
+          "lecture3_1-MultimodalFusion.pdf::p48::slide",
+          "lecture3_1-MultimodalFusion.pdf::p47::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6131471927654584,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6131471927654584
+      },
+      {
+        "id": "fus05",
+        "type": "text",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          54
+        ],
+        "ranked_pages": [
+          54,
+          54,
+          57,
+          55,
+          70
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p54::slide",
+          "lecture3_1-MultimodalFusion.pdf::p54::c0",
+          "lecture3_1-MultimodalFusion.pdf::p57::slide",
+          "lecture3_1-MultimodalFusion.pdf::p55::slide",
+          "lecture3_1-MultimodalFusion.pdf::p70::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "fus06",
+        "type": "figure",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          35
+        ],
+        "ranked_pages": [
+          35,
+          75,
+          68,
+          77,
+          51
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p35::slide",
+          "lecture3_1-MultimodalFusion.pdf::p75::slide",
+          "lecture3_1-MultimodalFusion.pdf::p68::slide",
+          "lecture3_1-MultimodalFusion.pdf::p77::slide",
+          "multimodal  Learning.pdf::p51::c0"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "fus07",
+        "type": "text",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          19,
+          23,
+          24
+        ],
+        "ranked_pages": [
+          19,
+          23,
+          21,
+          63,
+          63
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p19::slide",
+          "lecture3_1-MultimodalFusion.pdf::p23::slide",
+          "lecture3_1-MultimodalFusion.pdf::p21::slide",
+          "lecture3_1-MultimodalFusion.pdf::p63::c0",
+          "lecture3_1-MultimodalFusion.pdf::p63::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.7653606369886217,
+        "recall@5": 1.0,
+        "ndcg@5": 0.7653606369886217
+      },
+      {
+        "id": "fus08",
+        "type": "text",
+        "source": "lecture3_1-MultimodalFusion.pdf",
+        "gold": [
+          31,
+          33
+        ],
+        "ranked_pages": [
+          33,
+          31,
+          33,
+          48,
+          33
+        ],
+        "ranked_ids": [
+          "lecture3_1-MultimodalFusion.pdf::p33::c0",
+          "lecture3_1-MultimodalFusion.pdf::p31::c0",
+          "lecture3_1-MultimodalFusion.pdf::p33::slide",
+          "multimodal  Learning.pdf::p48::c0",
+          "lecture3_1-MultimodalFusion.pdf::p33::c1"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "ali01",
+        "type": "text",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          6,
+          7
+        ],
+        "ranked_pages": [
+          7,
+          6,
+          28,
+          51,
+          7
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p7::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p6::slide",
+          "lecture3_2-MultimodalCoordinationFission.pdf::p28::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p51::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p7::c0"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "ali02",
+        "type": "text",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          17
+        ],
+        "ranked_pages": [
+          17,
+          80,
+          17,
+          54,
+          53
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p17::slide",
+          "Lecture7_1-MultimodalInteraction.pdf::p80::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p17::c0",
+          "Lecture9.1-Generation-Part1.pdf::p54::c0",
+          "Lecture9.1-Generation-Part1.pdf::p53::c0"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "ali03",
+        "type": "figure",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          28,
+          29
+        ],
+        "ranked_pages": [
+          53,
+          53,
+          29,
+          28,
+          29
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p53::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p53::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p29::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p28::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p29::c0"
+        ],
+        "figure_hit": true,
+        "rr": 0.3333333333333333,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.3065735963827292,
+        "recall@5": 1.0,
+        "ndcg@5": 0.5706417189553201
+      },
+      {
+        "id": "ali04",
+        "type": "figure",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          34
+        ],
+        "ranked_pages": [
+          34,
+          7,
+          34,
+          33,
+          6
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p34::c0",
+          "lecture4.2-AlignedRepresentations.pdf::p7::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p34::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p33::c0",
+          "lecture4.2-AlignedRepresentations.pdf::p6::c0"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "ali05",
+        "type": "figure",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          19,
+          52
+        ],
+        "ranked_pages": [
+          52,
+          52,
+          19,
+          19,
+          18
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p52::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p52::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p19::slide",
+          "Lecture7_2-MultimodalInference.pdf::p19::c0",
+          "Lecture7_2-MultimodalInference.pdf::p18::c0"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.9197207891481876,
+        "recall@5": 1.0,
+        "ndcg@5": 0.9197207891481876
+      },
+      {
+        "id": "ali06",
+        "type": "figure",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          44,
+          55
+        ],
+        "ranked_pages": [
+          55,
+          55,
+          44,
+          56,
+          43
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p55::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p55::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p44::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p56::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p43::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.9197207891481876,
+        "recall@5": 1.0,
+        "ndcg@5": 0.9197207891481876
+      },
+      {
+        "id": "ali07",
+        "type": "figure",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          15,
+          47
+        ],
+        "ranked_pages": [
+          14,
+          59,
+          15,
+          47,
+          16
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p14::slide",
+          "multimodal  Learning.pdf::p59::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p15::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p47::c0",
+          "lecture4.2-AlignedRepresentations.pdf::p16::c0"
+        ],
+        "figure_hit": false,
+        "rr": 0.3333333333333333,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.3065735963827292,
+        "recall@5": 1.0,
+        "ndcg@5": 0.5706417189553201
+      },
+      {
+        "id": "ali08",
+        "type": "text",
+        "source": "lecture4.1-MultimodalAlignment.pdf",
+        "gold": [
+          60
+        ],
+        "ranked_pages": [
+          60,
+          60,
+          64,
+          51,
+          7
+        ],
+        "ranked_ids": [
+          "lecture4.1-MultimodalAlignment.pdf::p60::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p60::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p64::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p51::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p7::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "trf01",
+        "type": "text",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          4,
+          8
+        ],
+        "ranked_pages": [
+          15,
+          10,
+          36,
+          6,
+          11
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p15::c0",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p10::c0",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p36::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p6::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p11::slide"
+        ],
+        "figure_hit": false,
+        "rr": 0.0,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      },
+      {
+        "id": "trf02",
+        "type": "figure",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          23
+        ],
+        "ranked_pages": [
+          23,
+          23,
+          34,
+          20,
+          53
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p23::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p23::c0",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p34::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p20::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p53::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "trf03",
+        "type": "text",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          24,
+          25
+        ],
+        "ranked_pages": [
+          24,
+          46,
+          24,
+          46,
+          29
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p24::slide",
+          "lecture4.2-AlignedRepresentations.pdf::p46::c0",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p24::c0",
+          "lecture4.1-MultimodalAlignment.pdf::p46::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p29::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6131471927654584,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6131471927654584
+      },
+      {
+        "id": "trf04",
+        "type": "text",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          26,
+          27
+        ],
+        "ranked_pages": [
+          27,
+          26,
+          27,
+          48,
+          26
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p27::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p26::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p27::c0",
+          "lecture4.2-AlignedRepresentations.pdf::p48::c0",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p26::c0"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "trf05",
+        "type": "text",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          37
+        ],
+        "ranked_pages": [
+          37,
+          42,
+          53,
+          36,
+          103
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p37::c0",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p42::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p53::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p36::slide",
+          "multimodal  Learning.pdf::p103::c0"
+        ],
+        "figure_hit": false,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "trf06",
+        "type": "figure",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          40
+        ],
+        "ranked_pages": [
+          40,
+          40,
+          39,
+          47,
+          38
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p40::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p40::c0",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p39::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p47::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p38::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "trf07",
+        "type": "figure",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          49
+        ],
+        "ranked_pages": [
+          49,
+          49,
+          47,
+          48,
+          46
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p49::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p49::c0",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p47::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p48::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p46::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "trf08",
+        "type": "figure",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          46
+        ],
+        "ranked_pages": [
+          46,
+          46,
+          45,
+          48,
+          42
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p46::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p46::c0",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p45::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p48::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p42::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "trf09",
+        "type": "figure",
+        "source": "lecture5_1-MultimodalTransformers-Part1.pdf",
+        "gold": [
+          61
+        ],
+        "ranked_pages": [
+          61,
+          61,
+          60,
+          62,
+          60
+        ],
+        "ranked_ids": [
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p61::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p61::c0",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p60::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p62::slide",
+          "lecture4.2-AlignedRepresentations.pdf::p60::c0"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "gen01",
+        "type": "figure",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          3
+        ],
+        "ranked_pages": [
+          1,
+          41,
+          4,
+          73,
+          42
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p1::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p41::slide",
+          "lecture3_1-MultimodalFusion.pdf::p4::slide",
+          "lecture3_1-MultimodalFusion.pdf::p73::slide",
+          "lecture5_1-MultimodalTransformers-Part1.pdf::p42::slide"
+        ],
+        "figure_hit": false,
+        "rr": 0.0,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      },
+      {
+        "id": "gen02",
+        "type": "text",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          3
+        ],
+        "ranked_pages": [
+          55,
+          75,
+          29,
+          85,
+          44
+        ],
+        "ranked_ids": [
+          "Lecture9.2-Generation-Part2.pdf::p55::c0",
+          "multimodal  Learning.pdf::p75::c0",
+          "Lecture9.1-Generation-Part1.pdf::p29::c0",
+          "multimodal  Learning.pdf::p85::c0",
+          "multimodal  Learning.pdf::p44::c0"
+        ],
+        "figure_hit": false,
+        "rr": 0.0,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 0.0,
+        "ndcg@3": 0.0,
+        "recall@5": 0.0,
+        "ndcg@5": 0.0
+      },
+      {
+        "id": "gen03",
+        "type": "figure",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          13,
+          14
+        ],
+        "ranked_pages": [
+          14,
+          13,
+          15,
+          17,
+          12
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p14::slide",
+          "Lecture9.1-Generation-Part1.pdf::p13::slide",
+          "Lecture9.1-Generation-Part1.pdf::p15::slide",
+          "Lecture9.1-Generation-Part1.pdf::p17::slide",
+          "Lecture9.1-Generation-Part1.pdf::p12::slide"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "gen04",
+        "type": "text",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          16,
+          17
+        ],
+        "ranked_pages": [
+          17,
+          81,
+          17,
+          80,
+          16
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p17::slide",
+          "multimodal  Learning.pdf::p81::c0",
+          "Lecture9.1-Generation-Part1.pdf::p17::c0",
+          "multimodal  Learning.pdf::p80::c0",
+          "Lecture9.1-Generation-Part1.pdf::p16::c0"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6131471927654584,
+        "recall@5": 1.0,
+        "ndcg@5": 0.8503449055347546
+      },
+      {
+        "id": "gen05",
+        "type": "text",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          39,
+          40
+        ],
+        "ranked_pages": [
+          39,
+          57,
+          40,
+          41,
+          49
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p39::slide",
+          "Lecture9.1-Generation-Part1.pdf::p57::slide",
+          "Lecture9.1-Generation-Part1.pdf::p40::slide",
+          "Lecture9.1-Generation-Part1.pdf::p41::slide",
+          "Lecture9.2-Generation-Part2.pdf::p49::c0"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.9197207891481876,
+        "recall@5": 1.0,
+        "ndcg@5": 0.9197207891481876
+      },
+      {
+        "id": "gen06",
+        "type": "text",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          22
+        ],
+        "ranked_pages": [
+          85,
+          27,
+          22,
+          82,
+          84
+        ],
+        "ranked_ids": [
+          "multimodal  Learning.pdf::p85::c0",
+          "Lecture9.1-Generation-Part1.pdf::p27::c0",
+          "Lecture9.1-Generation-Part1.pdf::p22::c0",
+          "multimodal  Learning.pdf::p82::c0",
+          "multimodal  Learning.pdf::p84::c0"
+        ],
+        "figure_hit": false,
+        "rr": 0.3333333333333333,
+        "recall@1": 0.0,
+        "ndcg@1": 0.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.5,
+        "recall@5": 1.0,
+        "ndcg@5": 0.5
+      },
+      {
+        "id": "gen07",
+        "type": "text",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          48
+        ],
+        "ranked_pages": [
+          48,
+          48,
+          50,
+          64,
+          53
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p48::c0",
+          "Lecture9.1-Generation-Part1.pdf::p48::slide",
+          "Lecture9.1-Generation-Part1.pdf::p50::slide",
+          "lecture4.1-MultimodalAlignment.pdf::p64::c0",
+          "Lecture9.1-Generation-Part1.pdf::p53::c0"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 1.0,
+        "recall@5": 1.0,
+        "ndcg@5": 1.0
+      },
+      {
+        "id": "gen08",
+        "type": "figure",
+        "source": "Lecture9.1-Generation-Part1.pdf",
+        "gold": [
+          43,
+          44
+        ],
+        "ranked_pages": [
+          44,
+          44,
+          46,
+          45,
+          90
+        ],
+        "ranked_ids": [
+          "Lecture9.1-Generation-Part1.pdf::p44::c0",
+          "Lecture9.1-Generation-Part1.pdf::p44::slide",
+          "Lecture9.1-Generation-Part1.pdf::p46::c0",
+          "Lecture9.1-Generation-Part1.pdf::p45::c0",
+          "multimodal  Learning.pdf::p90::c0"
+        ],
+        "figure_hit": true,
+        "rr": 1.0,
+        "recall@1": 1.0,
+        "ndcg@1": 1.0,
+        "recall@3": 1.0,
+        "ndcg@3": 0.6131471927654584,
+        "recall@5": 1.0,
+        "ndcg@5": 0.6131471927654584
+      }
+    ]
+  }
+}

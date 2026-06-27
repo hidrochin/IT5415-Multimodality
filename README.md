@@ -197,6 +197,48 @@ rises 0.78→0.90 (95% bootstrap CIs; 2/33 answers abstain when evidence is thin
 The takeaway: a faithfulness metric probes the *prompt* as much as the model
 ([PROPOSAL.md](PROPOSAL.md) §7.3).
 
+## Cross-modal fusion — does embedding the image help? (RQ3 / H3)
+
+Captions route figures through the *text* space (describe-then-embed). The
+alternative is **embed-the-image**: a CLIP encoder maps both the slide image and
+the text query into one shared space (`scripts/build_image_index.py`, 252 slide
+vectors). H3 predicts that for OOD academic figures this image signal is *weaker*
+than captions, and that any gain from combining the two appears **only** under a
+rank- or distribution-aware fusion — never a fixed `0.7·text + 0.3·image` blend.
+`scripts/evaluate_fusion.py` retrieves both rankings once, then scores five
+conditions (no reranker — it is a first-stage combiner):
+
+```powershell
+python scripts/evaluate_fusion.py --gold data/eval/slides_qa.json
+```
+
+_All questions (33), top_k=5; **bold** = best:_
+
+| Condition                        | R@1       | R@5       | MRR       | nDCG@5 (95% CI)           |
+| -------------------------------- | --------- | --------- | --------- | ------------------------- |
+| text-only (describe-then-embed)  | 0.788     | 0.909     | 0.838     | 0.780 [0.679, 0.875]      |
+| image-only (CLIP embed-the-image)| 0.424     | 0.576     | 0.476     | 0.431 [0.293, 0.585]      |
+| RRF (rank fusion)                | 0.576     | 0.818     | 0.689     | 0.679 [0.557, 0.801]      |
+| fixed 0.7/0.3 blend (naive)      | 0.758     | 0.909     | 0.821     | 0.791 [0.685, 0.887]      |
+| **z-norm linear, α\*=0.8**       | **0.818** | 0.909     | **0.848** | **0.809 [0.705, 0.902]**  |
+
+α sweep (z-norm linear, `α·z(s_T)+(1−α)·z(s_V)`; α=1 → text-only, α=0 → image-only):
+nDCG@5 climbs 0.431 → **0.809 at α=0.8** → dips to 0.780 at α=1.0 — the optimum is
+**text-dominant but not pure text**.
+
+**H3 — supported.** (i) **Direction:** describe-then-embed crushes embed-the-image
+(nDCG@5 0.780 vs 0.431; figure subset 0.812 vs 0.374) — exactly the OOD / modality-gap
+penalty H3 predicts when academic figures meet a web-image-trained encoder. (ii)
+**Fusion:** the *only* combiner that beats text-only is the distribution-aware
+z-norm linear at a text-dominant α (0.809 vs 0.780, +0.029), and it also beats the
+fixed blend (0.791) — but **RRF actively hurts** (0.679): rank fusion gives the
+weak image list co-equal influence, dragging the strong text ranking down. The
+fixed blend is nearly inert (raw CLIP cosines ≈0.25–0.29 are too small to move the
+ranking). So "principled > naive" holds for the z-norm linear and *against* RRF —
+a refinement of the pre-registered claim. **Significance caveat:** the +0.029 lift
+sits well inside the bootstrap CI (0.809 [0.705, 0.902] vs 0.780 [0.679, 0.875]) —
+indicative, not significant at n=33 ([PROPOSAL.md](PROPOSAL.md) §7.5).
+
 ## Roadmap (maps to [PROPOSAL.md](PROPOSAL.md) §10)
 
 - [x] **Phase 1 — text RAG MVP**: parsing, chunking, embeddings, FAISS, grounded QA
@@ -215,7 +257,9 @@ The takeaway: a faithfulness metric probes the *prompt* as much as the model
       text-image space; a text-query probe returns sane slide hits (the *embed-the-image* arm of H3).
       Build on GPU via [`notebooks/build_image_index.ipynb`](notebooks/build_image_index.ipynb) or
       locally with `scripts/build_image_index.py`; probe with `scripts/probe_image_search.py`
-- [ ] **Phase 3b — RRF / distribution-aware fusion** of text + image rankings (RQ3 / H3), *not* a
-      fixed-weight score blend, with full E3 eval + α sensitivity curve
+- [x] **Phase 3b — RRF / distribution-aware fusion** of text + image rankings (RQ3 / H3), *not* a
+      fixed-weight score blend, with full E3 eval + α sensitivity curve — H3 supported: text ≫ image
+      (nDCG@5 0.780 vs 0.431), z-norm linear (α\*=0.8) is the only combiner that beats text-only
+      (0.809) while RRF hurts (0.679), see [Cross-modal fusion](#cross-modal-fusion--does-embedding-the-image-help-rq3--h3)
 - [ ] **Phase 4c — QA accuracy** (LLM-judge + human-κ validation) + Gradio UI + Colab notebook
 ```
