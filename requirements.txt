@@ -20,4 +20,4 @@ paddleocr>=3.0.0              # OCR over extracted figures/screenshots (module 6
 # open_clip_torch>=2.24.0    # CLIP / SigLIP image embeddings
 # FlagEmbedding>=1.2.0       # BGE-M3 + bge-reranker-base
 # pdfplumber>=0.11.0         # table-aware parsing
-# gradio>=4.0.0              # UI
+gradio>=5.0.0                # UI (scripts/app.py — T9 demo)

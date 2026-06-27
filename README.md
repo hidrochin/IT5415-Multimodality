@@ -34,6 +34,9 @@ python scripts/fetch_sample.py
 # 5. ingest + ask
 python scripts/ingest.py "data/raw/attention_is_all_you_need.pdf"
 python scripts/ask.py "What is self-attention?"
+
+# 6. or explore in the browser (Gradio UI over the slide index)
+python scripts/app.py
 ```
 
 Get a free Gemini API key at https://aistudio.google.com/app/apikey.
@@ -68,6 +71,7 @@ scripts/
   evaluate.py          # text-only vs text+caption retrieval metrics
   build_image_index.py # build the CLIP image index (--pack zips a Colab payload)
   probe_image_search.py# cross-modal probe: text query -> top slide images
+  app.py               # Gradio UI: question -> grounded answer + evidence thumbnails
 notebooks/
   build_image_index.ipynb  # GPU (Colab) encode of slide images -> image index
 data/raw/              # input PDFs / slides
@@ -261,5 +265,7 @@ indicative, not significant at n=33 ([PROPOSAL.md](PROPOSAL.md) §7.5).
       fixed-weight score blend, with full E3 eval + α sensitivity curve — H3 supported: text ≫ image
       (nDCG@5 0.780 vs 0.431), z-norm linear (α\*=0.8) is the only combiner that beats text-only
       (0.809) while RRF hurts (0.679), see [Cross-modal fusion](#cross-modal-fusion--does-embedding-the-image-help-rq3--h3)
-- [ ] **Phase 4c — QA accuracy** (LLM-judge + human-κ validation) + Gradio UI + Colab notebook
+- [x] **Demo — Gradio UI** (`scripts/app.py`): query box → grounded answer with `[pN]` citations →
+      thumbnail gallery of the retrieved slides + ranked evidence breakdown (cited chunks flagged)
+- [ ] **Phase 4c — QA accuracy** (LLM-judge + human-κ validation) + Colab notebook
 ```
