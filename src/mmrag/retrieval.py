@@ -6,12 +6,53 @@ Phase 2 will add image embeddings and score fusion
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 import numpy as np
 
 _INDEX_FILE = "index.faiss"
 _CHUNKS_FILE = "chunks.json"
+
+_TOKEN_RE = re.compile(r"[a-z0-9]+")
+
+
+def _tokenize(text: str) -> list[str]:
+    """Lowercase word/number tokens — the shared tokenizer for BM25."""
+    return _TOKEN_RE.findall(text.lower())
+
+
+class BM25Index:
+    """Okapi-BM25 lexical baseline (eval B0) over the same chunk store.
+
+    The dense retrievers are the system under test; BM25 is the term-matching
+    floor they must clear to justify the embedding cost (PROPOSAL §6.1). It mirrors
+    ``FaissIndex``'s ``.search`` contract — returns chunk dicts with a ``score`` —
+    but is searched by the **raw query string** (no embedder), so ``evaluate`` can
+    treat it uniformly via its ``lexical=True`` path.
+    """
+
+    def __init__(self, chunks: list[dict]) -> None:
+        from rank_bm25 import BM25Okapi
+
+        self.chunks = chunks
+        corpus = [_tokenize(c["text"]) for c in chunks]
+        # rank_bm25 can't index an empty corpus; guard so an all-empty chunk set
+        # (shouldn't happen post-ingest) degrades to "no hits" instead of raising.
+        self._bm25 = BM25Okapi(corpus) if corpus else None
+
+    def search(self, query: str, top_k: int = 5) -> list[dict]:
+        if self._bm25 is None:
+            return []
+        scores = self._bm25.get_scores(_tokenize(query))
+        top_k = min(top_k, len(self.chunks))
+        top_idx = np.argsort(scores)[::-1][:top_k]
+        results: list[dict] = []
+        for idx in top_idx:
+            hit = dict(self.chunks[int(idx)])
+            hit["score"] = float(scores[idx])
+            results.append(hit)
+        return results
 
 
 class FaissIndex:

@@ -120,29 +120,49 @@ python scripts/ingest_corpus.py                            # build the multi-dec
 python scripts/evaluate.py --gold data/eval/slides_qa.json # add --no-rerank for dense-only
 ```
 
-**Results** (33 questions, top_k=5):
+**Results** (33 questions, top_k=5). Four first-stage conditions — a **BM25
+lexical baseline** (B0) and the dense BGE-M3 retriever, each over text-only vs
+text+caption chunks. `nDCG@5` carries a 95% bootstrap CI (1,000 resamples over
+questions); **bold** marks the best per block:
 
-| Subset       | Config       | rerank | R@1   | R@3   | R@5   | MRR   |
-| ------------ | ------------ | ------ | ----- | ----- | ----- | ----- |
-| all (33)     | text-only    | on     | 0.576 | 0.788 | 0.818 | 0.683 |
-| all (33)     | text+caption | on     | **0.727** | **0.909** | **0.909** | **0.813** |
-| all (33)     | text-only    | off    | 0.500 | 0.778 | 0.889 | 0.655 |
-| all (33)     | text+caption | off    | **0.833** | **0.944** | **0.944** | **0.880** |
-| figure (18)  | text-only    | on     | 0.556 | 0.778 | 0.833 | 0.669 |
-| figure (18)  | text+caption | on     | **0.778** | **0.944** | **0.944** | **0.852** |
+_All questions (33):_
+
+| Retriever      | Chunks       | rerank | R@1       | R@5       | MRR       | nDCG@5 (95% CI)            |
+| -------------- | ------------ | ------ | --------- | --------- | --------- | ------------------------- |
+| BM25 (B0)      | text-only    | —      | 0.545     | 0.788     | 0.643     | 0.637 [0.500, 0.767]      |
+| BM25 (B0)      | text+caption | —      | 0.606     | 0.879     | 0.712     | 0.701 [0.583, 0.813]      |
+| dense BGE-M3   | text-only    | on     | 0.576     | 0.818     | 0.683     | 0.680 [0.554, 0.800]      |
+| dense BGE-M3   | text+caption | on     | **0.727** | **0.909** | **0.813** | **0.775 [0.660, 0.871]**  |
+| dense BGE-M3   | text-only    | off    | 0.455     | 0.818     | 0.605     | 0.632 [0.498, 0.746]      |
+| dense BGE-M3   | text+caption | off    | **0.788** | 0.909     | **0.838** | **0.780 [0.679, 0.875]**  |
+
+_Figure-grounded subset (18):_
+
+| Retriever      | Chunks       | rerank | R@1       | R@5       | MRR       | nDCG@5 (95% CI)            |
+| -------------- | ------------ | ------ | --------- | --------- | --------- | ------------------------- |
+| BM25 (B0)      | text-only    | —      | 0.611     | 0.833     | 0.696     | 0.713 [0.531, 0.878]      |
+| BM25 (B0)      | text+caption | —      | 0.611     | 0.889     | 0.717     | 0.726 [0.566, 0.886]      |
+| dense BGE-M3   | text-only    | on     | 0.556     | 0.833     | 0.669     | 0.689 [0.516, 0.844]      |
+| dense BGE-M3   | text+caption | on     | **0.778** | **0.944** | **0.852** | **0.827 [0.700, 0.934]**  |
 
 **Interpretation.** Flipping the regime flips the result. On text-sparse slides,
-making figures retrievable via captions **lifts** retrieval — overall R@1
-0.576→0.727 (MRR 0.683→0.813), with the gain concentrated in the figure-grounded
-subset (R@1 0.556→0.778). The relevant slide caption chunk reaches top-5 for
-14/18 figure questions. This is the mirror image of the text-rich null above, so
-both **H1** (multimodal beats text-only, concentrated in figure queries +
-text-sparse docs) and **H2** (caption benefit is moderated by page text-density)
-are **supported**. One incidental finding: the *text* cross-encoder reranker
-slightly demotes correct caption chunks (text+caption R@1 is higher *without* it,
-0.833 vs 0.727) — a cross-modal-aware reranker is future work. Caveat: n=33, one
-course corpus, page-level relevance — **indicative, not significant** until BM25
-baselines and bootstrap CIs land ([PROPOSAL.md](PROPOSAL.md) §6.4, §7.2).
+making figures retrievable via captions **lifts** retrieval *under both
+retrievers* — BM25 nDCG@5 0.637→0.701, dense (rerank) 0.680→0.775 — with the gain
+concentrated in the figure-grounded subset (dense R@1 0.556→0.778). The relevant
+slide caption chunk reaches top-5 for 14/18 (rerank) — 16/18 (no rerank) figure
+questions. This is the mirror image of the text-rich null above, so both **H1**
+(multimodal beats text-only, concentrated in figure queries + text-sparse docs)
+and **H2** (caption benefit is moderated by page text-density) are **supported**.
+Two further reads: (i) the **caption signal matters more than the encoder** — even
+lexical BM25 over caption chunks (nDCG@5 0.701) edges dense text-only (0.680/0.632),
+so the win is the captions, not just the embeddings; (ii) the *text* cross-encoder
+reranker **demotes** correct caption chunks (dense text+caption is best *without*
+it: R@1 0.788 vs 0.727, 16/18 vs 14/18 chunk hits) — a cross-modal-aware reranker
+is future work. **Significance caveat:** at n=33 the 95% CIs are wide and overlap
+across conditions (e.g. dense text+caption nDCG@5 0.775 [0.660, 0.871] vs dense
+text-only 0.680 [0.554, 0.800]) — the lift is **consistent across metrics and
+retrievers but not statistically separated**; a larger gold set is needed to
+tighten it ([PROPOSAL.md](PROPOSAL.md) §6.4, §7.2).
 
 ## Roadmap (maps to [PROPOSAL.md](PROPOSAL.md) §10)
 
@@ -155,7 +175,8 @@ baselines and bootstrap CIs land ([PROPOSAL.md](PROPOSAL.md) §6.4, §7.2).
       (one shared index, 1,226 chunks; 4 eval decks captioned, rest text-only distractors)
 - [x] **Gold QA over the slide decks** (33 pairs) + **source-aware slide retrieval eval** — H1/H2
       both supported (captions lift R@1 0.576→0.727; figure subset 0.556→0.778), see [Evaluation](#evaluation-rq1--rq2)
-- [ ] **Phase 4b — eval hardening**: BM25 baseline, nDCG, bootstrap CIs, faithfulness / citation precision-recall
+- [x] **Phase 4b — eval hardening**: BM25 lexical baseline, nDCG@K, bootstrap CIs (added) — see [Evaluation](#evaluation-rq1--rq2)
+- [ ] **Faithfulness / citation precision-recall** over grounded answers
 - [ ] **Phase 3 — image embeddings** (CLIP/SigLIP) + **RRF / distribution-aware fusion** (RQ3 / H3),
       *not* a fixed-weight score blend
 - [ ] **Phase 4c — QA accuracy** (LLM-judge + human-κ validation) + Gradio UI + Colab notebook
