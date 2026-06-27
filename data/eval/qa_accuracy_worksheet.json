@@ -1,0 +1,145 @@
+{
+  "instructions": "Human validation for the LLM judge (PROPOSAL §6.2). For each item, read the QUESTION, the REFERENCE (known-correct), and the CANDIDATE, then set \"human_label\" to one of: correct | partial | incorrect (same rubric the judge used: judge factual coverage vs the reference, ignore style/length/citations). Do NOT look at \"judge_label\" while deciding. Then run: python scripts/qa_accuracy.py --kappa data/eval/qa_accuracy_worksheet.json",
+  "seed": 0,
+  "items": [
+    {
+      "key": "text-only::fus02",
+      "condition": "text-only",
+      "id": "fus02",
+      "type": "figure",
+      "question": "How does additive fusion differ from multiplicative fusion of two modalities?",
+      "reference": "Additive fusion combines the modalities by a (weighted) sum: z = w1·xA + w2·xB (or fA + fB with unimodal encoders), which behaves like an ensemble / late fusion and a 1-layer network can be viewed as additive. Multiplicative fusion combines them by a product: simple multiplicative z = w·(xA × xB) or bilinear Z = W(xA^T ⊗ xB), which captures interactions/correlations between the two modalities rather than just their independent contributions.",
+      "candidate": "Additive fusion can be represented as $z = f_A + f_B$ or $z = w_1x_A + w_2x_B$, where $f_A$ and $f_B$ are unimodal encoders, and $x_A$ and $x_B$ are features from Modality A and Modality B, respectively [p42]. It can also be seen as an ensemble approach (late fusion) [p42]. A 1-layer neural network can be considered additive fusion [p42].\n\nMultiplicative fusion can be simple, represented as $z = w \\times x_A \\times x_B$ [p43]. Another form is Bilinear Fusion, $Z = x_A^T W x_B$ [p43].\n\nAdditive interaction can be expressed as $z = w_1x_A + w_2x_B$, while additive and multiplicative interaction can be expressed as $z = w_1x_A + w_2x_B + w_3 \\times x_A \\times x_B$ [p52]. Additive fusion can also be represented as $y_0 = f_A(x_A) + f_B(x_B)$ [p10, p59].",
+      "judge_label": "partial",
+      "human_label": "correct"
+    },
+    {
+      "key": "text-only::fus03",
+      "condition": "text-only",
+      "id": "fus03",
+      "type": "figure",
+      "question": "What is tensor fusion and how is the bimodal fused tensor computed from the unimodal vectors?",
+      "reference": "Tensor fusion forms the fused representation as the outer product of the unimodal vectors, each augmented with a constant 1, so the result captures unimodal (additive) and bimodal/higher-order (multiplicative) interactions at once. The bimodal fused tensor is Z = w·([xA;1] ⊗ [xB;1]), the outer product of the two augmented vectors. Its drawback is that the resulting weight tensor/matrix becomes very large.",
+      "candidate": "Tensor fusion is a method for multimodal fusion that can model cross-modal interactions between individual elements of different modalities [p99]. It can be trimodal (multiplicative) or bimodal (multiplicative) [p7, p44].\n\nFor bimodal tensor fusion, the fused tensor $\\mathcal{Z}$ is computed as $\\mathcal{Z} = \\mathbf{w} \\mathbf{x}_A^T \\otimes \\mathbf{x}_B$ [p7, p44]. Here, $\\mathbf{x}_A$ and $\\mathbf{x}_B$ represent the unimodal vectors from Modality A and Modality B, respectively, and $\\mathbf{w}$ is a weight vector [p7, p44]. The notation $\\otimes$ signifies the outer product [p7, p44].",
+      "judge_label": "partial",
+      "human_label": "partial"
+    },
+    {
+      "key": "text-only::fus05",
+      "condition": "text-only",
+      "id": "fus05",
+      "type": "text",
+      "question": "What is gated fusion and how are the gating functions related to attention?",
+      "reference": "Gated fusion weights each modality's contribution by a learned gate that depends on the inputs, e.g. z = gA(xA,xB)·xA + gB(xA,xB)·xB. The gating functions gA and gB can be seen as attention functions (data-dependent soft weights deciding how much of each modality passes through); a gate can even output a single weight for the whole modality.",
+      "candidate": "Gated fusion involves combining information from different modalities, such as Modality A and Modality B, to produce a fused output [p54]. In this process, gating functions, denoted as $g_A$ and $g_B$, can be seen as attention functions [p54]. These gating functions take the inputs from the modalities ($x_A$ and $x_B$) and determine how much of each modality's signal should be allowed to propagate forward [p54, p55]. The gating output can be a single weight for the entire modality [p54]. For example, in additive fusion, the fused output $z$ can be calculated as $z = g_A(x_A, x_B) * x_A + g_B(x_A, x_B) * x_B$ [p54]. Gating modules, also known as attention modules, are neural networks designed to mask unwanted signals or select preferable signals [p55]. This gating can be implemented with soft or hard attention [p57]. Gated attention via element-wise product is also used in language-conditional reinforcement learning for instruction following [p81]. Gated coordination, related to attention modules in transformers, also uses gating functions $g_A$ and $g_B$ that take inputs from both modalities to produce coordinated outputs $z_A$ and $z_B$ [p25].",
+      "judge_label": "correct",
+      "human_label": "correct"
+    },
+    {
+      "key": "text-only::ali04",
+      "condition": "text-only",
+      "id": "ali04",
+      "type": "figure",
+      "question": "What restrictions must a Dynamic Time Warping path satisfy?",
+      "reference": "A Dynamic Time Warping path must satisfy: monotonicity (no going back in time), continuity (no gaps), boundary conditions (start and end at the matching endpoints), a warping window (stay close to the diagonal), and a slope constraint (do not insert or skip too much). It is found by dynamic programming subject to these restrictions.",
+      "candidate": "A Dynamic Time Warping path must satisfy the following restrictions: monotonicity (no going back in time), continuity (no gaps), boundary conditions (start and end at the same points), a warping window (don't get too far from the diagonal), and a slope constraint (do not insert or skip too much) [p34, p7].",
+      "judge_label": "correct",
+      "human_label": "correct"
+    },
+    {
+      "key": "text-only::ali08",
+      "condition": "text-only",
+      "id": "ali08",
+      "type": "text",
+      "question": "What does SigLIP 2 change relative to classic CLIP?",
+      "reference": "SigLIP 2 keeps global image–text coordination as its backbone but adds auxiliary objectives — captioning-based pretraining, self-distillation + masked prediction, and online data curation. Versus classic CLIP it outperforms earlier models on zero-shot classification, image–text retrieval and transfer, improves localization and dense prediction (not just global matching), and supports multiple resolutions while preserving native aspect ratio.",
+      "candidate": "SigLIP 2 outperforms earlier SigLIP models on zero-shot classification, image–text retrieval, and transfer. It also improves localization and dense prediction, not just global matching, and supports multiple resolutions while preserving native aspect ratio [p60]. The lesson learned is that auxiliary objectives transform image–text embeddings into stronger grounding features [p60].",
+      "judge_label": "partial",
+      "human_label": "partial"
+    },
+    {
+      "key": "text-only::trf03",
+      "condition": "text-only",
+      "id": "trf03",
+      "type": "text",
+      "question": "How does the masked language model pre-training task work in BERT?",
+      "reference": "Masked language modeling randomly masks some input tokens ([MASK]) and trains the model to predict the original tokens using both the left and right context (bidirectional context). The loss is computed only on the masked positions.",
+      "candidate": "The Masked Language Model (MLM) pre-training task in BERT involves randomly masking input tokens and then attempting to predict them [p46, p24]. This process utilizes Transformer Self-Attention and a loss function to achieve its objective [p46, p24]. BERT employs a masked language model with bidirectional self-attention over the full context [p29].",
+      "judge_label": "partial",
+      "human_label": "partial"
+    },
+    {
+      "key": "text-only::gen05",
+      "condition": "text-only",
+      "id": "gen05",
+      "type": "text",
+      "question": "How do autoregressive models factorize the probability of an image or sequence?",
+      "reference": "Autoregressive models factorize the joint probability as a product of conditionals, each element conditioned on all previous ones: for an image, p(x) = ∏_i p(x_i | x_1,…,x_{i-1}) (pixel by pixel); for a sequence, p(x) = ∏_t p(x_t | x_1,…,x_{t-1}) (token by token).",
+      "candidate": "Autoregressive models factorize the probability of an image or sequence using the chain rule [p49].",
+      "judge_label": "partial",
+      "human_label": "partial"
+    },
+    {
+      "key": "text+caption::fus03",
+      "condition": "text+caption",
+      "id": "fus03",
+      "type": "figure",
+      "question": "What is tensor fusion and how is the bimodal fused tensor computed from the unimodal vectors?",
+      "reference": "Tensor fusion forms the fused representation as the outer product of the unimodal vectors, each augmented with a constant 1, so the result captures unimodal (additive) and bimodal/higher-order (multiplicative) interactions at once. The bimodal fused tensor is Z = w·([xA;1] ⊗ [xB;1]), the outer product of the two augmented vectors. Its drawback is that the resulting weight tensor/matrix becomes very large.",
+      "candidate": "Tensor fusion is a method for combining unimodal inputs into a tensor [p44]. In bimodal tensor fusion, two unimodal inputs, represented by vectors $x_A$ and $x_B$, are combined into a tensor $Z$ through a multiplicative fusion process. The mathematical equation for this is $Z = w([x_A \\ 1]^T \\otimes [x_B \\ 1])$, where $w$ is a weight matrix and $\\otimes$ denotes the outer product [p44, p7, p44]. This process can also be represented as $Z = w x_A^T \\otimes x_B$ [p7, p44].",
+      "judge_label": "partial",
+      "human_label": "correct"
+    },
+    {
+      "key": "text+caption::ali02",
+      "condition": "text+caption",
+      "id": "ali02",
+      "type": "text",
+      "question": "What is language grounding in multimodal alignment?",
+      "reference": "Language grounding is tying language (words, phrases) to non-linguistic elements such as the visual world (objects, people) — e.g. associating the phrase “a woman” and “newspaper” with the corresponding regions of an image.",
+      "candidate": "The provided evidence does not contain information about language grounding in multimodal alignment.",
+      "judge_label": "incorrect",
+      "human_label": "incorrect"
+    },
+    {
+      "key": "text+caption::ali06",
+      "condition": "text+caption",
+      "id": "ali06",
+      "type": "figure",
+      "question": "How does the CTC collapse rule turn per-frame predictions into a final label sequence?",
+      "reference": "CTC starts from the network's per-frame predictions, which include a special blank token (∅). The collapse rule then (1) merges consecutive duplicate labels and (2) removes the blank tokens, yielding the final label sequence (e.g. ∅ t t ah ∅ m aa aa t ow ∅ → t ah m aa t ow). CTC sums over all frame-level paths that collapse to the same label sequence, and the blank absorbs duration differences, so no pre-segmented boundaries are needed.",
+      "candidate": "The CTC collapse rule converts frame scores into labels through a three-step process. First, the network emits a per-frame path, which is an initial sequence of labels and blank tokens ($\\emptyset$). For example, this sequence might be $\\emptyset$, t, t, ah, $\\emptyset$, m, aa, aa, t, ow, $\\emptyset$ [p55]. Second, consecutive duplicate labels are collapsed, merging repeated labels. The example sequence then becomes $\\emptyset$, t, ah, $\\emptyset$, m, aa, t, ow, $\\emptyset$ [p55]. Third, blank tokens are removed to produce the final label sequence, resulting in t, ah, m, aa, t, ow [p55]. This process allows CTC to solve the \"many frames $\\rightarrow$ one label\" problem without needing pre-segmented boundaries, as it uses per-time-step distributions and sums over all paths that collapse to the same label sequence [p55]. The blank token plays a role in absorbing duration differences [p55].",
+      "judge_label": "correct",
+      "human_label": "correct"
+    },
+    {
+      "key": "text+caption::trf04",
+      "condition": "text+caption",
+      "id": "trf04",
+      "type": "text",
+      "question": "What is the next sentence prediction task and what does it predict?",
+      "reference": "Next Sentence Prediction takes two sentences A and B (formatted [CLS] A [SEP] B [SEP]) and predicts whether B actually follows A — a binary IsNext vs NotNext classification, read from the [CLS] token's representation.",
+      "candidate": "The Next Sentence Prediction task involves predicting whether sentence B follows sentence A [p27]. It is a task given two sentences, where the goal is to predict if one is the next sentence or not [p47, p26]. The prediction is either \"IsNext\" or \"NotNext\" [p27, p47, p26].",
+      "judge_label": "partial",
+      "human_label": "correct"
+    },
+    {
+      "key": "text+caption::gen03",
+      "condition": "text+caption",
+      "id": "gen03",
+      "type": "figure",
+      "question": "What are the two main components of DALL-E's text-to-image pipeline?",
+      "reference": "DALL-E's text-to-image pipeline has two main components: (1) a discrete VAE (dVAE) that encodes images into discrete image tokens and decodes them back to images, and (2) an autoregressive transformer that, from the text tokens, generates the sequence of image tokens, which the dVAE decoder then turns into the final image.",
+      "candidate": "The two main components of DALL-E's text-to-image translation process are the \"Discrete VAE\" and the \"Autoregressive Transformer\" [p13]. The Discrete VAE is responsible for image encoding and decoding, while the Autoregressive Transformer processes text and generates a sequence that guides image generation [p13].",
+      "judge_label": "correct",
+      "human_label": "correct"
+    }
+  ],
+  "annotator": "assistant author-proxy (provisional; replace with the human author's labels for the final report)",
+  "kappa": {
+    "three_way": 0.5862068965517241,
+    "binary": 0.5263157894736842,
+    "raw_agreement": 0.75,
+    "n": 12
+  }
+}

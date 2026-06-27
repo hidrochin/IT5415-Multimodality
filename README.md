@@ -62,6 +62,7 @@ src/mmrag/
   retrieval.py         # 6.6 FAISS dense retrieval
   rerank.py            # 6.7 bge-reranker cross-encoder
   qa.py                # 6.8 Gemini grounded QA
+  judge.py             # 6.2 QA-accuracy LLM-judge + Cohen's kappa (pure, unit-checkable)
   evaluation.py        # 9   Recall@K, MRR, in-memory index builder
   pipeline.py          # ingest() + ask() orchestration
 scripts/
@@ -69,6 +70,7 @@ scripts/
   ingest.py            # build the index from a PDF
   ask.py               # query the index
   evaluate.py          # text-only vs text+caption retrieval metrics
+  qa_accuracy.py       # LLM-judge QA accuracy per condition + judge-human kappa
   build_image_index.py # build the CLIP image index (--pack zips a Colab payload)
   probe_image_search.py# cross-modal probe: text query -> top slide images
   app.py               # Gradio UI: question -> grounded answer + evidence thumbnails
@@ -243,6 +245,42 @@ a refinement of the pre-registered claim. **Significance caveat:** the +0.029 li
 sits well inside the bootstrap CI (0.809 [0.705, 0.902] vs 0.780 [0.679, 0.875]) —
 indicative, not significant at n=33 ([PROPOSAL.md](PROPOSAL.md) §7.5).
 
+## QA accuracy — are the answers actually correct?
+
+Recall finds the evidence; faithfulness keeps the answer inside it; this asks the
+question a reader cares about — **is the answer right?** We hand-authored a gold
+**reference answer** per question (grounded in the slide content), generate a
+grounded answer under two retrieval conditions, and grade each against its
+reference with an LLM judge one tier *above* the answer model (`gemini-2.5-flash`
+judging `flash-lite`, so it never grades itself), returning `correct` / `partial`
+/ `incorrect` while ignoring style, length, and citations
+(`scripts/qa_accuracy.py`, `mmrag/judge.py`).
+
+```powershell
+python scripts/qa_accuracy.py --gold data/eval/slides_qa.json
+```
+
+_Graded score = incorrect 0 / partial 0.5 / correct 1; 33 questions:_
+
+| Condition          | graded (95% CI)      | strict (correct only) | correct / partial / incorrect |
+| ------------------ | -------------------- | --------------------- | ----------------------------- |
+| dense text-only    | 0.682 [0.561, 0.788] | 0.455                 | 15 / 15 / 3                   |
+| **dense text+caption** | **0.742 [0.621, 0.848]** | **0.606**         | 20 / 9 / 4                    |
+
+Figure-grounded subset (18): text-only strict 0.444 → **text+caption strict 0.667**.
+
+**The retrieval win shows up in answer quality.** Caption-augmented retrieval turns
+*partials into fully-correct* answers — strict accuracy 0.455→0.606 overall and
+0.444→0.667 on figure questions — so the H1/H2 gain is not cosmetic. (CIs overlap:
+indicative, not significant at n=33.)
+
+**Judge validation.** On a blind 12-item subset, judge–human Cohen's **κ = 0.59**
+(3-way) / 0.53 (binary), raw agreement 0.75 — **moderate**, so the numbers are
+usable but the correct/partial boundary carries judge slack. Every disagreement is
+the judge grading *stricter*. _These human labels are a provisional author-proxy
+pass (one independent annotation), to be replaced by the author's own labels for
+the final report_ ([PROPOSAL.md](PROPOSAL.md) §7.6).
+
 ## Roadmap (maps to [PROPOSAL.md](PROPOSAL.md) §10)
 
 - [x] **Phase 1 — text RAG MVP**: parsing, chunking, embeddings, FAISS, grounded QA
@@ -265,7 +303,10 @@ indicative, not significant at n=33 ([PROPOSAL.md](PROPOSAL.md) §7.5).
       fixed-weight score blend, with full E3 eval + α sensitivity curve — H3 supported: text ≫ image
       (nDCG@5 0.780 vs 0.431), z-norm linear (α\*=0.8) is the only combiner that beats text-only
       (0.809) while RRF hurts (0.679), see [Cross-modal fusion](#cross-modal-fusion--does-embedding-the-image-help-rq3--h3)
+- [x] **Phase 4c — QA accuracy** (LLM-judge vs gold reference answers, judge–human κ validation):
+      text+caption lifts strict accuracy 0.45→0.61 (figure subset 0.44→0.67); judge–human κ=0.59
+      (moderate, provisional author-proxy labels), see [QA accuracy](#qa-accuracy--are-the-answers-actually-correct)
 - [x] **Demo — Gradio UI** (`scripts/app.py`): query box → grounded answer with `[pN]` citations →
       thumbnail gallery of the retrieved slides + ranked evidence breakdown (cited chunks flagged)
-- [ ] **Phase 4c — QA accuracy** (LLM-judge + human-κ validation) + Colab notebook
+- [ ] **Phase 4e — Colab reproducibility pack + final write-up**
 ```
