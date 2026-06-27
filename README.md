@@ -55,6 +55,7 @@ src/mmrag/
   figures.py           # 6.3 Gemini figure captioning (VLM)
   chunking.py          # 6.4 multimodal chunk structure (text + figure chunks)
   embeddings.py        # 6.5 text embeddings (normalized for cosine)
+  image_embeddings.py  # 6.5b CLIP cross-modal image/query embeddings (embed-the-image, H3)
   retrieval.py         # 6.6 FAISS dense retrieval
   rerank.py            # 6.7 bge-reranker cross-encoder
   qa.py                # 6.8 Gemini grounded QA
@@ -65,6 +66,10 @@ scripts/
   ingest.py            # build the index from a PDF
   ask.py               # query the index
   evaluate.py          # text-only vs text+caption retrieval metrics
+  build_image_index.py # build the CLIP image index (--pack zips a Colab payload)
+  probe_image_search.py# cross-modal probe: text query -> top slide images
+notebooks/
+  build_image_index.ipynb  # GPU (Colab) encode of slide images -> image index
 data/raw/              # input PDFs / slides
 data/processed/        # extracted images + FAISS index
 data/eval/             # hand-authored gold QA sets
@@ -206,7 +211,11 @@ The takeaway: a faithfulness metric probes the *prompt* as much as the model
 - [x] **Phase 4b — eval hardening**: BM25 lexical baseline, nDCG@K, bootstrap CIs (added) — see [Evaluation](#evaluation-rq1--rq2)
 - [x] **Faithfulness / citation precision-recall** over grounded answers — zero leakage after a prompt
       fix the metric exposed, see [Faithfulness](#faithfulness--does-the-answer-stay-inside-the-evidence)
-- [ ] **Phase 3 — image embeddings** (CLIP/SigLIP) + **RRF / distribution-aware fusion** (RQ3 / H3),
-      *not* a fixed-weight score blend
+- [x] **Phase 3a — cross-modal image embeddings** (CLIP): 252 slide images encoded into a shared
+      text-image space; a text-query probe returns sane slide hits (the *embed-the-image* arm of H3).
+      Build on GPU via [`notebooks/build_image_index.ipynb`](notebooks/build_image_index.ipynb) or
+      locally with `scripts/build_image_index.py`; probe with `scripts/probe_image_search.py`
+- [ ] **Phase 3b — RRF / distribution-aware fusion** of text + image rankings (RQ3 / H3), *not* a
+      fixed-weight score blend, with full E3 eval + α sensitivity curve
 - [ ] **Phase 4c — QA accuracy** (LLM-judge + human-κ validation) + Gradio UI + Colab notebook
 ```

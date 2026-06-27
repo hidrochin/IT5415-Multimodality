@@ -28,6 +28,20 @@ embeddings:
   query_prefix: ""
   passage_prefix: ""
 
+image_embeddings:
+  # PROPOSAL §3.2 / §5.3: the *embed-the-image* arm (cross-space) that H3 tests
+  # against describe-then-embed. A CLIP checkpoint loaded via sentence-transformers
+  # encodes BOTH figure images and the text query into one shared, L2-normalized
+  # space (inner product == cosine), so retrieval is genuinely cross-modal.
+  #   clip-ViT-B-32  -> fast, 512-d, the default probe encoder
+  #   clip-ViT-L-14  -> stronger, 768-d, heavier (prefer GPU/Colab)
+  # SigLIP is a future swap (needs open_clip), kept as future work per §5.3.
+  enabled: true
+  model: clip-ViT-B-32
+  device: auto                       # auto | cpu | cuda (encoding many imgs => GPU)
+  batch_size: 32
+  index_dir: data/processed/image_index   # image_vecs.npy + image_index.json
+
 ocr:
   # Spec module 6.2: PaddleOCR reads text baked into figures/screenshots.
   # OFF for the slide-render path: these decks have a real text layer (parsing
