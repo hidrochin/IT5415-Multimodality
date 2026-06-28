@@ -74,8 +74,10 @@ scripts/
   build_image_index.py # build the CLIP image index (--pack zips a Colab payload)
   probe_image_search.py# cross-modal probe: text query -> top slide images
   app.py               # Gradio UI: question -> grounded answer + evidence thumbnails
+  pack_repro.py        # bundle code+config+gold+prebuilt indexes -> repro_pack.zip + manifest
 notebooks/
   build_image_index.ipynb  # GPU (Colab) encode of slide images -> image index
+  reproduce_eval.ipynb     # one-click Colab reproduce of the eval tables (from repro_pack.zip)
 data/raw/              # input PDFs / slides
 data/processed/        # extracted images + FAISS index
 data/eval/             # hand-authored gold QA sets
@@ -308,5 +310,25 @@ the final report_ ([PROPOSAL.md](PROPOSAL.md) §7.6).
       (moderate, provisional author-proxy labels), see [QA accuracy](#qa-accuracy--are-the-answers-actually-correct)
 - [x] **Demo — Gradio UI** (`scripts/app.py`): query box → grounded answer with `[pN]` citations →
       thumbnail gallery of the retrieved slides + ranked evidence breakdown (cited chunks flagged)
-- [ ] **Phase 4e — Colab reproducibility pack + final write-up**
+- [x] **Phase 4e — Colab reproducibility pack**: `scripts/pack_repro.py` bundles the code, config,
+      gold set, and *prebuilt* FAISS + CLIP indexes into `repro_pack.zip` with a `REPRO_MANIFEST.json`
+      pinning model IDs / seeds / config / package versions; [`notebooks/reproduce_eval.ipynb`](notebooks/reproduce_eval.ipynb)
+      reproduces every eval table one-click (retrieval/fusion are key-free; faithfulness/QA-accuracy
+      need a Gemini key) — verified to reproduce the H3 fusion table exactly from a clean unzip
+- [ ] **Phase 4f — final report / thesis write-up**
 ```
+
+## Reproduce the eval
+
+```powershell
+# build the self-contained pack (code + config + gold + prebuilt indexes + manifest)
+./.venv/Scripts/python.exe scripts/pack_repro.py        # -> data/processed/repro_pack.zip (~5.5 MB)
+# then upload it to notebooks/reproduce_eval.ipynb on Colab (GPU) and run all cells
+```
+
+`REPRO_MANIFEST.json` pins everything needed to reproduce: model IDs (BGE-M3 / bge-reranker-base /
+clip-ViT-B-32 / Gemini answerer + judge), the bootstrap seed (0) and resample count (1000), retrieval
+knobs, dataset stats, and exact package versions. The retrieval (H1/H2) and fusion (H3) tables
+reproduce **without an API key** from the shipped indexes; faithfulness and QA-accuracy regenerate
+live answers and need `GEMINI_API_KEY`. `--with-payload` additionally embeds the slide PNGs so the
+CLIP image index can be rebuilt from scratch on GPU via `notebooks/build_image_index.ipynb`.
